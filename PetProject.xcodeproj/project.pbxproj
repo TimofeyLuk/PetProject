@@ -8,14 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		434063EF27EC6C200031CF24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434063EE27EC6C200031CF24 /* AppDelegate.swift */; };
-		434063F127EC6C200031CF24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434063F027EC6C200031CF24 /* SceneDelegate.swift */; };
 		434063F327EC6C200031CF24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434063F227EC6C200031CF24 /* ViewController.swift */; };
-		434063F627EC6C200031CF24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434063F427EC6C200031CF24 /* Main.storyboard */; };
 		434063F827EC6C210031CF24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434063F727EC6C210031CF24 /* Assets.xcassets */; };
-		434063FB27EC6C210031CF24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 434063F927EC6C210031CF24 /* LaunchScreen.storyboard */; };
 		4340640627EC6C210031CF24 /* PetProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340640527EC6C210031CF24 /* PetProjectTests.swift */; };
 		4340641027EC6C210031CF24 /* PetProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340640F27EC6C210031CF24 /* PetProjectUITests.swift */; };
 		4340641227EC6C210031CF24 /* PetProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340641127EC6C210031CF24 /* PetProjectUITestsLaunchTests.swift */; };
+		4340642027EC76200031CF24 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340641F27EC76200031CF24 /* AppCoordinator.swift */; };
+		4340642127EC76200031CF24 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340641F27EC76200031CF24 /* AppCoordinator.swift */; };
+		4340642627EC77450031CF24 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340642527EC77450031CF24 /* UserModel.swift */; };
+		4340642727EC77450031CF24 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340642527EC77450031CF24 /* UserModel.swift */; };
+		4340642827EC77450031CF24 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340642527EC77450031CF24 /* UserModel.swift */; };
+		4340642C27EC7A540031CF24 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340642B27EC7A540031CF24 /* Coordinator.swift */; };
+		4340642D27EC7A540031CF24 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340642B27EC7A540031CF24 /* Coordinator.swift */; };
+		4340642E27EC7A540031CF24 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4340642B27EC7A540031CF24 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,17 +43,17 @@
 /* Begin PBXFileReference section */
 		434063EB27EC6C200031CF24 /* PetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434063EE27EC6C200031CF24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		434063F027EC6C200031CF24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		434063F227EC6C200031CF24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		434063F527EC6C200031CF24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		434063F727EC6C210031CF24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		434063FA27EC6C210031CF24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		434063FC27EC6C210031CF24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4340640127EC6C210031CF24 /* PetProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PetProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4340640527EC6C210031CF24 /* PetProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProjectTests.swift; sourceTree = "<group>"; };
 		4340640B27EC6C210031CF24 /* PetProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PetProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4340640F27EC6C210031CF24 /* PetProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProjectUITests.swift; sourceTree = "<group>"; };
 		4340641127EC6C210031CF24 /* PetProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4340641F27EC76200031CF24 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		4340642527EC77450031CF24 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		4340642B27EC7A540031CF24 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +104,12 @@
 		434063ED27EC6C200031CF24 /* PetProject */ = {
 			isa = PBXGroup;
 			children = (
+				4340642927EC78D50031CF24 /* Coordinators */,
+				4340642427EC76F70031CF24 /* ViewModels */,
+				4340642327EC76EB0031CF24 /* Views */,
+				4340642227EC76D10031CF24 /* Models */,
 				434063EE27EC6C200031CF24 /* AppDelegate.swift */,
-				434063F027EC6C200031CF24 /* SceneDelegate.swift */,
-				434063F227EC6C200031CF24 /* ViewController.swift */,
-				434063F427EC6C200031CF24 /* Main.storyboard */,
 				434063F727EC6C210031CF24 /* Assets.xcassets */,
-				434063F927EC6C210031CF24 /* LaunchScreen.storyboard */,
 				434063FC27EC6C210031CF24 /* Info.plist */,
 			);
 			path = PetProject;
@@ -125,6 +130,46 @@
 				4340641127EC6C210031CF24 /* PetProjectUITestsLaunchTests.swift */,
 			);
 			path = PetProjectUITests;
+			sourceTree = "<group>";
+		};
+		4340642227EC76D10031CF24 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4340642527EC77450031CF24 /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4340642327EC76EB0031CF24 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				434063F227EC6C200031CF24 /* ViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4340642427EC76F70031CF24 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4340642927EC78D50031CF24 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				4340642A27EC7A3A0031CF24 /* Protocols */,
+				4340641F27EC76200031CF24 /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		4340642A27EC7A3A0031CF24 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4340642B27EC7A540031CF24 /* Coordinator.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,9 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				434063FB27EC6C210031CF24 /* LaunchScreen.storyboard in Resources */,
 				434063F827EC6C210031CF24 /* Assets.xcassets in Resources */,
-				434063F627EC6C200031CF24 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +301,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4340642027EC76200031CF24 /* AppCoordinator.swift in Sources */,
 				434063F327EC6C200031CF24 /* ViewController.swift in Sources */,
+				4340642C27EC7A540031CF24 /* Coordinator.swift in Sources */,
 				434063EF27EC6C200031CF24 /* AppDelegate.swift in Sources */,
-				434063F127EC6C200031CF24 /* SceneDelegate.swift in Sources */,
+				4340642627EC77450031CF24 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +313,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4340642727EC77450031CF24 /* UserModel.swift in Sources */,
 				4340640627EC6C210031CF24 /* PetProjectTests.swift in Sources */,
+				4340642D27EC7A540031CF24 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +325,9 @@
 			files = (
 				4340641227EC6C210031CF24 /* PetProjectUITestsLaunchTests.swift in Sources */,
 				4340641027EC6C210031CF24 /* PetProjectUITests.swift in Sources */,
+				4340642E27EC7A540031CF24 /* Coordinator.swift in Sources */,
+				4340642827EC77450031CF24 /* UserModel.swift in Sources */,
+				4340642127EC76200031CF24 /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,25 +345,6 @@
 			targetProxy = 4340640C27EC6C210031CF24 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		434063F427EC6C200031CF24 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				434063F527EC6C200031CF24 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		434063F927EC6C210031CF24 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				434063FA27EC6C210031CF24 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4340641327EC6C210031CF24 /* Debug */ = {
@@ -442,7 +473,6 @@
 				INFOPLIST_FILE = PetProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,7 +500,6 @@
 				INFOPLIST_FILE = PetProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
