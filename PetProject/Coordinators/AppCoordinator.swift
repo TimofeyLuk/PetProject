@@ -15,6 +15,16 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        
+        // TODO: check if user authorised
+        showLoginView()
+    }
+    
+    func showLoginView() {
+        let user = UserModel(login: "", password: "")
+        let loginViewModel = LoginViewModel(user: user)
+        let loginVC = LoginViewController()
+        loginVC.coordinator = self
+        loginVC.loginScreenVM = loginViewModel
+        navigationController.pushViewController(loginVC, animated: false)
     }
 }
