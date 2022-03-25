@@ -9,8 +9,14 @@ import Foundation
 
 class NetworkService {
     
-    func login(user: UserModel) {
-        
+    func send(data: Data, forUrl url: String) async throws -> (Data, URLResponse) {
+        if Bool.random() {
+            print("send success")
+            return (Data(), URLResponse())
+        } else {
+            print("send fail")
+            throw LoginError(type: .network, message: "Some network error")
+        }
     }
     
 }

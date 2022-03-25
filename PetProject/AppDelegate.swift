@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
         let navigationController = UINavigationController()
-        self.coordinator = AppCoordinator(navigationController: navigationController)
+        let networkService = NetworkService()
+        self.coordinator = AppCoordinator(navigationController: navigationController, networkService: networkService)
         coordinator?.start()
         
         window = UIWindow(frame: UIScreen.main.bounds)

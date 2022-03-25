@@ -73,7 +73,7 @@ class AuthTextField: UIView {
         
         [textField, messageLabel].forEach { view in
             view.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-            view.heightAnchor.constraint(equalToConstant: self.bounds.height / 2).isActive = true
+            view.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5).isActive = true
         }
         
     }

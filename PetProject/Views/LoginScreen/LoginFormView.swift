@@ -46,7 +46,7 @@ class LoginFormView: UIView {
         [loginField, passwordField].forEach { view in
             view.translatesAutoresizingMaskIntoConstraints = false
             view.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -Constants.horizontalSpacing).isActive = true
-            view.heightAnchor.constraint(equalToConstant: self.bounds.height / 3).isActive = true
+            view.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.3).isActive = true
             view.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         }
         
@@ -55,7 +55,7 @@ class LoginFormView: UIView {
         
         loginButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: Constants.verticalSpacing * 2).isActive = true
         loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constants.verticalSpacing * 2).isActive = true
-        loginButton.widthAnchor.constraint(equalToConstant: self.bounds.width / 2).isActive = true
+        loginButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
         loginButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         loginButton.layer.cornerRadius = Constants.cornerRadius
     }
