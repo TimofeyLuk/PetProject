@@ -7,6 +7,9 @@
 
 import Foundation
 
-struct UserModel {
+struct UserModel: Codable {
+    var login: String
+    var password: String
     
+    var isAuthorised = false
 }
