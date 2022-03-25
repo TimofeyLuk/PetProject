@@ -36,6 +36,10 @@ class AppCoordinator: Coordinator {
     }
     
     func showMainScreen() {
-        
+        let mainViewController = MainScreenViewController()
+        let mainScreenVM = MainScreenViewModel()
+        mainViewController.mainScreenVM = mainScreenVM
+        navigationController.viewControllers.removeAll()
+        navigationController.pushViewController(mainViewController, animated: true)
     }
 }
