@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkService {
+final class NetworkService {
     
     func send(data: Data, forUrl url: String) async throws -> (Data, URLResponse) {
         if Bool.random() {

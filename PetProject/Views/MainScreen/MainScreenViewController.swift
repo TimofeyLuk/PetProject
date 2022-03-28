@@ -11,19 +11,29 @@ class MainScreenViewController: UIViewController {
     
     var mainScreenVM: MainScreenViewModel?
     private let cellIdentifier = "MainScreenTableViewCell"
+    private let tableView = UITableView()
     
     override func viewDidLoad() {
-        let tableView = UITableView()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
-        
+        styleUI()
+        setupTableView()
+        makeConstraints()
+    }
+    
+    private func styleUI() {
         view.addSubview(tableView)
+    }
+    
+    private func makeConstraints() {
         tableView.snp.makeConstraints { maker in
             maker.size.equalToSuperview()
         }
     }
     
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+    }
 }
 
 extension MainScreenViewController: UITableViewDataSource, UITableViewDelegate {

@@ -1,5 +1,5 @@
 //
-//  AuthTextField.swift
+//  BorderedTextField.swift
 //  PetProject
 //
 //  Created by Тимофей Лукашевич on 24.03.22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AuthTextField: UIView {
+class BorderedTextField: UIView {
     
     // MARK: - Subviews
     
@@ -48,10 +48,6 @@ class AuthTextField: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    
-        self.textField.translatesAutoresizingMaskIntoConstraints = false
-        self.textField.borderStyle = .roundedRect
-        
         self.textField.addTarget(self, action: #selector(handleFieldEditing), for: .editingDidBegin)
     }
     
@@ -60,13 +56,20 @@ class AuthTextField: UIView {
     }
     
     override func layoutSubviews() {
-        makeLayoutConstrains()
+        styleUI()
+        makeConstraints()
         super.layoutSubviews()
     }
     
-    func makeLayoutConstrains() {
+    private func styleUI() {
         addSubview(textField)
         addSubview(messageLabel)
+        textField.borderStyle = .roundedRect
+    }
+    
+    private func makeConstraints() {
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
         
         textField.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         messageLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true

@@ -1,5 +1,5 @@
 //
-//  PasswordTextField.swift
+//  SecuredBorderedTextField.swift
 //  PetProject
 //
 //  Created by Тимофей Лукашевич on 24.03.22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PasswordTextField: AuthTextField {
+class SecuredBorderedTextField: BorderedTextField {
     
     private lazy var showPassButton: UIButton = {
         var button = UIButton(type: .custom)

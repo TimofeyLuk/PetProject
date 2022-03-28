@@ -11,14 +11,14 @@ class LoginFormView: UIView {
     
     // MARK: - Subviews
     
-    let loginField: AuthTextField = {
-        let authField = AuthTextField()
+    let loginField: BorderedTextField = {
+        let authField = BorderedTextField()
         authField.textField.placeholder = "login"
         return authField
     }()
     
-    let passwordField: PasswordTextField = {
-        let passwordField = PasswordTextField()
+    let passwordField: SecuredBorderedTextField = {
+        let passwordField = SecuredBorderedTextField()
         passwordField.textField.placeholder = "password"
         return passwordField
     }()

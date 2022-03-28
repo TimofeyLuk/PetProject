@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LoginService {
+final class LoginService {
     
     var networkService: NetworkService
     
