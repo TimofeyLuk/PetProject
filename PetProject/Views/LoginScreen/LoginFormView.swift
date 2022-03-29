@@ -13,13 +13,13 @@ class LoginFormView: UIView {
     
     let loginField: BorderedTextField = {
         let authField = BorderedTextField()
-        authField.textField.placeholder = "login"
+        authField.textField.placeholder = "login".localized
         return authField
     }()
     
     let passwordField: SecuredBorderedTextField = {
         let passwordField = SecuredBorderedTextField()
-        passwordField.textField.placeholder = "password"
+        passwordField.textField.placeholder = "password".localized
         return passwordField
     }()
     

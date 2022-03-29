@@ -15,7 +15,7 @@ final class NetworkService {
             return (Data(), URLResponse())
         } else {
             print("send fail")
-            throw LoginError(type: .network, message: "Some network error")
+            throw LoginError(type: .network, message: "Some network error".localized)
         }
     }
     
