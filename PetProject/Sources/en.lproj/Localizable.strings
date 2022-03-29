@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  PetProject
+
+  Created by Тимофей Лукашевич on 29.03.22.
+  
+*/
+
+
+"Login can not be empty" = "Login can not be empty";
+"Login can not contains uppercase" = "Login can not contains uppercase";
+"Password can not be empty" = "Password can not be empty";
+"Some network error" = "Some network error";
+"Error"= "Error";
+"Ok"= "Ok";
+"login" = "login";
+"password" = "password";
+"Login" = "Login";
