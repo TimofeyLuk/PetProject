@@ -7,9 +7,10 @@
 
 import UIKit
 
-class AppCoordinator: Coordinator {
-    var navigationController: UINavigationController
-    var networkService: NetworkService
+final class AppCoordinator: Coordinator {
+    
+    private(set) var navigationController: UINavigationController
+    private var networkService: NetworkService
     
     init(navigationController: UINavigationController, networkService: NetworkService) {
         self.navigationController = navigationController
@@ -26,15 +27,14 @@ class AppCoordinator: Coordinator {
         let loginService = LoginService(networkService: networkService)
         let loginViewModel = LoginViewModel(user: user, loginService: loginService)
         let loginVC = LoginViewController()
-        loginVC.coordinator = self
+        loginVC.delegate = self
         loginVC.loginScreenVM = loginViewModel
         navigationController.pushViewController(loginVC, animated: false)
     }
     
-    func showAlert(_ alert: UIAlertController) {
-        navigationController.topViewController?.present(alert, animated: true)
-    }
-    
+}
+
+extension AppCoordinator: LoginViewControllerDelegate {
     func showMainScreen() {
         let mainViewController = MainScreenViewController()
         let mainScreenVM = MainScreenViewModel()

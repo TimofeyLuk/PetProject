@@ -27,21 +27,30 @@
 		439E83AD27EDBF36004065F5 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E83AC27EDBF35004065F5 /* MainScreenViewModel.swift */; };
 		439E83AE27EDBF36004065F5 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E83AC27EDBF35004065F5 /* MainScreenViewModel.swift */; };
 		439E83AF27EDBF36004065F5 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439E83AC27EDBF35004065F5 /* MainScreenViewModel.swift */; };
+		43C0782627F1E6DE006A896C /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C0782527F1E6DE006A896C /* DependencyContainer.swift */; };
+		43C0782727F1E6DE006A896C /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C0782527F1E6DE006A896C /* DependencyContainer.swift */; };
+		43C0782827F1E6DE006A896C /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C0782527F1E6DE006A896C /* DependencyContainer.swift */; };
+		43CC86F227F2E19700C1D94F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43CC86F627F2E19700C1D94F /* Localizable.strings */; };
+		43CC86F327F2E19700C1D94F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43CC86F627F2E19700C1D94F /* Localizable.strings */; };
+		43CC86F427F2E19700C1D94F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 43CC86F627F2E19700C1D94F /* Localizable.strings */; };
+		43CC86FA27F2E21600C1D94F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CC86F927F2E21600C1D94F /* StringExtensions.swift */; };
+		43CC86FB27F2E21600C1D94F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CC86F927F2E21600C1D94F /* StringExtensions.swift */; };
+		43CC86FC27F2E21600C1D94F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CC86F927F2E21600C1D94F /* StringExtensions.swift */; };
 		43E8BF5927EC866400D9CC50 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF5827EC866400D9CC50 /* LoginViewModel.swift */; };
 		43E8BF5A27EC866400D9CC50 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF5827EC866400D9CC50 /* LoginViewModel.swift */; };
 		43E8BF5B27EC866400D9CC50 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF5827EC866400D9CC50 /* LoginViewModel.swift */; };
 		43E8BF5E27EC90E800D9CC50 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF5D27EC90E800D9CC50 /* NetworkService.swift */; };
 		43E8BF5F27EC90E800D9CC50 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF5D27EC90E800D9CC50 /* NetworkService.swift */; };
 		43E8BF6027EC90E800D9CC50 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF5D27EC90E800D9CC50 /* NetworkService.swift */; };
-		43E8BF6227EC919F00D9CC50 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6127EC919F00D9CC50 /* AuthTextField.swift */; };
-		43E8BF6327EC919F00D9CC50 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6127EC919F00D9CC50 /* AuthTextField.swift */; };
-		43E8BF6427EC919F00D9CC50 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6127EC919F00D9CC50 /* AuthTextField.swift */; };
+		43E8BF6227EC919F00D9CC50 /* BorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6127EC919F00D9CC50 /* BorderedTextField.swift */; };
+		43E8BF6327EC919F00D9CC50 /* BorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6127EC919F00D9CC50 /* BorderedTextField.swift */; };
+		43E8BF6427EC919F00D9CC50 /* BorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6127EC919F00D9CC50 /* BorderedTextField.swift */; };
 		43E8BF6727EC979700D9CC50 /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6627EC979700D9CC50 /* LoginFormView.swift */; };
 		43E8BF6827EC979700D9CC50 /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6627EC979700D9CC50 /* LoginFormView.swift */; };
 		43E8BF6927EC979700D9CC50 /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6627EC979700D9CC50 /* LoginFormView.swift */; };
-		43E8BF6B27EC981000D9CC50 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6A27EC981000D9CC50 /* PasswordTextField.swift */; };
-		43E8BF6C27EC981000D9CC50 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6A27EC981000D9CC50 /* PasswordTextField.swift */; };
-		43E8BF6D27EC981000D9CC50 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6A27EC981000D9CC50 /* PasswordTextField.swift */; };
+		43E8BF6B27EC981000D9CC50 /* SecuredBorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6A27EC981000D9CC50 /* SecuredBorderedTextField.swift */; };
+		43E8BF6C27EC981000D9CC50 /* SecuredBorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6A27EC981000D9CC50 /* SecuredBorderedTextField.swift */; };
+		43E8BF6D27EC981000D9CC50 /* SecuredBorderedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF6A27EC981000D9CC50 /* SecuredBorderedTextField.swift */; };
 		43E8BF7127ECB16900D9CC50 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF7027ECB16900D9CC50 /* LoginService.swift */; };
 		43E8BF7227ECB16900D9CC50 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF7027ECB16900D9CC50 /* LoginService.swift */; };
 		43E8BF7327ECB16900D9CC50 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E8BF7027ECB16900D9CC50 /* LoginService.swift */; };
@@ -88,11 +97,14 @@
 		4340642B27EC7A540031CF24 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		439E83A927EDBE72004065F5 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		439E83AC27EDBF35004065F5 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
+		43C0782527F1E6DE006A896C /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		43CC86F527F2E19700C1D94F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		43CC86F927F2E21600C1D94F /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		43E8BF5827EC866400D9CC50 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		43E8BF5D27EC90E800D9CC50 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		43E8BF6127EC919F00D9CC50 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
+		43E8BF6127EC919F00D9CC50 /* BorderedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedTextField.swift; sourceTree = "<group>"; };
 		43E8BF6627EC979700D9CC50 /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
-		43E8BF6A27EC981000D9CC50 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
+		43E8BF6A27EC981000D9CC50 /* SecuredBorderedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuredBorderedTextField.swift; sourceTree = "<group>"; };
 		43E8BF7027ECB16900D9CC50 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		43E8BF7427ECB17900D9CC50 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		9EF345FABF5925CFFA577B01 /* Pods-PetProject-PetProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetProject-PetProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-PetProject-PetProjectUITests/Pods-PetProject-PetProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +168,8 @@
 		434063ED27EC6C200031CF24 /* PetProject */ = {
 			isa = PBXGroup;
 			children = (
+				43CC86F727F2E1C900C1D94F /* Extensions */,
+				43CC86ED27F2DF3700C1D94F /* Sources */,
 				43E8BF5C27EC90A900D9CC50 /* Services */,
 				4340642927EC78D50031CF24 /* Coordinators */,
 				4340642427EC76F70031CF24 /* ViewModels */,
@@ -236,11 +250,36 @@
 			path = MainScreen;
 			sourceTree = "<group>";
 		};
+		43CC86ED27F2DF3700C1D94F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				43CC86F627F2E19700C1D94F /* Localizable.strings */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		43CC86F727F2E1C900C1D94F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				43CC86F827F2E1CF00C1D94F /* Foundation */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		43CC86F827F2E1CF00C1D94F /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				43CC86F927F2E21600C1D94F /* StringExtensions.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 		43E8BF5C27EC90A900D9CC50 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				43E8BF6F27ECB15300D9CC50 /* LoginService */,
 				43E8BF5D27EC90E800D9CC50 /* NetworkService.swift */,
+				43C0782527F1E6DE006A896C /* DependencyContainer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -258,8 +297,8 @@
 		43E8BF6E27EC981600D9CC50 /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
-				43E8BF6127EC919F00D9CC50 /* AuthTextField.swift */,
-				43E8BF6A27EC981000D9CC50 /* PasswordTextField.swift */,
+				43E8BF6127EC919F00D9CC50 /* BorderedTextField.swift */,
+				43E8BF6A27EC981000D9CC50 /* SecuredBorderedTextField.swift */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -406,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				434063F827EC6C210031CF24 /* Assets.xcassets in Resources */,
+				43CC86F227F2E19700C1D94F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +453,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43CC86F327F2E19700C1D94F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +461,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43CC86F427F2E19700C1D94F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,13 +575,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43E8BF6B27EC981000D9CC50 /* PasswordTextField.swift in Sources */,
+				43E8BF6B27EC981000D9CC50 /* SecuredBorderedTextField.swift in Sources */,
+				43C0782627F1E6DE006A896C /* DependencyContainer.swift in Sources */,
 				439E83AD27EDBF36004065F5 /* MainScreenViewModel.swift in Sources */,
 				439E83AA27EDBE72004065F5 /* MainScreenViewController.swift in Sources */,
 				4340642027EC76200031CF24 /* AppCoordinator.swift in Sources */,
 				43E8BF7527ECB17900D9CC50 /* LoginError.swift in Sources */,
-				43E8BF6227EC919F00D9CC50 /* AuthTextField.swift in Sources */,
+				43E8BF6227EC919F00D9CC50 /* BorderedTextField.swift in Sources */,
 				434063F327EC6C200031CF24 /* LoginViewController.swift in Sources */,
+				43CC86FA27F2E21600C1D94F /* StringExtensions.swift in Sources */,
 				43E8BF5927EC866400D9CC50 /* LoginViewModel.swift in Sources */,
 				4340642C27EC7A540031CF24 /* Coordinator.swift in Sources */,
 				43E8BF7127ECB16900D9CC50 /* LoginService.swift in Sources */,
@@ -561,9 +605,11 @@
 				4340642727EC77450031CF24 /* UserModel.swift in Sources */,
 				43E8BF6827EC979700D9CC50 /* LoginFormView.swift in Sources */,
 				43E8BF7227ECB16900D9CC50 /* LoginService.swift in Sources */,
-				43E8BF6327EC919F00D9CC50 /* AuthTextField.swift in Sources */,
+				43E8BF6327EC919F00D9CC50 /* BorderedTextField.swift in Sources */,
 				4340640627EC6C210031CF24 /* PetProjectTests.swift in Sources */,
-				43E8BF6C27EC981000D9CC50 /* PasswordTextField.swift in Sources */,
+				43E8BF6C27EC981000D9CC50 /* SecuredBorderedTextField.swift in Sources */,
+				43C0782727F1E6DE006A896C /* DependencyContainer.swift in Sources */,
+				43CC86FB27F2E21600C1D94F /* StringExtensions.swift in Sources */,
 				4340642D27EC7A540031CF24 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,13 +618,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				43E8BF6D27EC981000D9CC50 /* PasswordTextField.swift in Sources */,
+				43E8BF6D27EC981000D9CC50 /* SecuredBorderedTextField.swift in Sources */,
+				43C0782827F1E6DE006A896C /* DependencyContainer.swift in Sources */,
 				439E83AF27EDBF36004065F5 /* MainScreenViewModel.swift in Sources */,
 				439E83AB27EDBE72004065F5 /* MainScreenViewController.swift in Sources */,
 				4340641227EC6C210031CF24 /* PetProjectUITestsLaunchTests.swift in Sources */,
 				43E8BF7727ECB17900D9CC50 /* LoginError.swift in Sources */,
-				43E8BF6427EC919F00D9CC50 /* AuthTextField.swift in Sources */,
+				43E8BF6427EC919F00D9CC50 /* BorderedTextField.swift in Sources */,
 				4340641027EC6C210031CF24 /* PetProjectUITests.swift in Sources */,
+				43CC86FC27F2E21600C1D94F /* StringExtensions.swift in Sources */,
 				43E8BF5B27EC866400D9CC50 /* LoginViewModel.swift in Sources */,
 				4340642E27EC7A540031CF24 /* Coordinator.swift in Sources */,
 				43E8BF7327ECB16900D9CC50 /* LoginService.swift in Sources */,
@@ -603,6 +651,17 @@
 			targetProxy = 4340640C27EC6C210031CF24 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		43CC86F627F2E19700C1D94F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				43CC86F527F2E19700C1D94F /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4340641327EC6C210031CF24 /* Debug */ = {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LoginService {
+final class LoginService {
     
     var networkService: NetworkService
     
@@ -34,16 +34,16 @@ class LoginService {
     
     private func validateLogin(_ login: String) throws {
         if login.isEmpty {
-            throw LoginError(type: .login, message: "Login can not be empty")
+            throw LoginError(type: .login, message: "Login can not be empty".localized)
         }
         if login.lowercased() != login {
-            throw LoginError(type: .login, message: "Login can not contains uppercase")
+            throw LoginError(type: .login, message: "Login can not contains uppercase".localized)
         }
     }
     
     private func validatePassword(_ password: String) throws {
         if password.isEmpty {
-            throw LoginError(type: .login, message: "Password can not be empty")
+            throw LoginError(type: .login, message: "Password can not be empty".localized)
         }
     }
 }

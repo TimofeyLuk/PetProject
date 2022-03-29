@@ -8,10 +8,14 @@
 import UIKit
 import Combine
 
+protocol LoginViewControllerDelegate: AnyObject, Coordinator {
+    func showMainScreen()
+}
+
 class LoginViewController: UIViewController {
 
     // MARK: - Subviews
-    weak var coordinator: AppCoordinator?
+    weak var delegate: LoginViewControllerDelegate?
     var loginScreenVM: LoginViewModel?
     let loginForm = LoginFormView()
     
@@ -21,10 +25,7 @@ class LoginViewController: UIViewController {
     private var loginFormHeightAnchor: NSLayoutConstraint?
     private var loginFormBottomAnchorWhenKeyboardShown: NSLayoutConstraint?
     
-    // MARK: - Observers
-    private var userModelObserver: AnyCancellable?
-    private var loginErrorObserver: AnyCancellable?
-    private var loginButtonEnableObserver: AnyCancellable?
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -33,6 +34,7 @@ class LoginViewController: UIViewController {
         loginForm.passwordField.textField.delegate = self
         loginForm.loginButton.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         setupLayout()
+        setupLayoutConstraints()
         makeObserving()
     }
     
@@ -50,8 +52,10 @@ class LoginViewController: UIViewController {
     private func setupLayout() {
         view.backgroundColor = .systemBlue
         view.addSubview(loginForm)
-        
         loginForm.backgroundColor = .white
+    }
+    
+    private func setupLayoutConstraints() {
         loginForm.translatesAutoresizingMaskIntoConstraints = false
         loginForm.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         setupLoginFormHeightAnchor()
@@ -115,14 +119,14 @@ class LoginViewController: UIViewController {
     }
     
     private func makeViewModelObserving() {
-        userModelObserver = loginScreenVM?.$user.receive(on: DispatchQueue.main).sink { [weak self] user in
+        loginScreenVM?.$user.receive(on: DispatchQueue.main).sink { [weak self] user in
             guard let self = self else { return }
             if user.isAuthorised {
-                self.coordinator?.showMainScreen()
+                self.delegate?.showMainScreen()
             }
-        }
+        }.store(in: &cancellables)
         
-        loginErrorObserver = loginScreenVM?.$loginError.receive(on: DispatchQueue.main).sink { [weak self] loginError in
+        loginScreenVM?.$loginError.receive(on: DispatchQueue.main).sink { [weak self] loginError in
             guard
                 let self = self,
                 let loginError = loginError
@@ -133,19 +137,20 @@ class LoginViewController: UIViewController {
             case .password:
                 self.loginForm.passwordField.setErrorMessage(loginError.message)
             case .network:
-                let alert = UIAlertController(title: "Error",
+                let alert = UIAlertController(title: "Error".localized,
                                               message: loginError.message,
                                               preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok", style: .cancel)
+                let okAction = UIAlertAction(title: "Ok".localized, style: .cancel)
                 alert.addAction(okAction)
-                self.coordinator?.showAlert(alert)
+                self.delegate?.showAlert(alert)
             }
-        }
+        }.store(in: &cancellables)
         
-        loginButtonEnableObserver = loginScreenVM?.$isLoginInProgress
+       loginScreenVM?.$isLoginInProgress
             .receive(on: DispatchQueue.main)
             .map({ !$0 })
             .assign(to: \.isEnabled, on: loginForm.loginButton)
+            .store(in: &cancellables)
         
     }
     

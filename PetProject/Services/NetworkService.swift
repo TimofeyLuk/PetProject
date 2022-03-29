@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkService {
+final class NetworkService {
     
     func send(data: Data, forUrl url: String) async throws -> (Data, URLResponse) {
         if Bool.random() {
@@ -15,7 +15,7 @@ class NetworkService {
             return (Data(), URLResponse())
         } else {
             print("send fail")
-            throw LoginError(type: .network, message: "Some network error")
+            throw LoginError(type: .network, message: "Some network error".localized)
         }
     }
     

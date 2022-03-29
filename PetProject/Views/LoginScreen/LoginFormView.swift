@@ -11,15 +11,15 @@ class LoginFormView: UIView {
     
     // MARK: - Subviews
     
-    let loginField: AuthTextField = {
-        let authField = AuthTextField()
-        authField.textField.placeholder = "login"
+    let loginField: BorderedTextField = {
+        let authField = BorderedTextField()
+        authField.textField.placeholder = "login".localized
         return authField
     }()
     
-    let passwordField: PasswordTextField = {
-        let passwordField = PasswordTextField()
-        passwordField.textField.placeholder = "password"
+    let passwordField: SecuredBorderedTextField = {
+        let passwordField = SecuredBorderedTextField()
+        passwordField.textField.placeholder = "password".localized
         return passwordField
     }()
     
