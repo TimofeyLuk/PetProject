@@ -16,3 +16,5 @@
 "login" = "login";
 "password" = "password";
 "Login" = "Login";
+"Number of deals:" = "Number of deals:";
+"Unable to get stores information" = "Unable to get stores information";
