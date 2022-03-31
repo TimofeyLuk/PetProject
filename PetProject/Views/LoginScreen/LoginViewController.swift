@@ -15,7 +15,7 @@ protocol LoginViewControllerDelegate: AnyObject {
 class LoginViewController: UIViewController {
 
     var delegate: (LoginViewControllerDelegate & Coordinator)?
-    var loginScreenVM: LoginViewModel?
+    var loginScreenVM: LoginViewModel!
     let loginForm = LoginFormView()
     
     // MARK: - Constraints
