@@ -15,6 +15,8 @@ final class CheapSharkService {
     private var hostURL =  URL(string: "https://www.cheapshark.com")
     private var cancellables = Set<AnyCancellable>()
     private let networkService: NetworkService
+    let maximumDealsCount = 999
+    let paginationDealsCount = 40
     
     init(networkService: NetworkService) {
         self.networkService = networkService
@@ -27,8 +29,14 @@ final class CheapSharkService {
         }
         url.appendPathComponent("stores")
         networkService.getResponsePublisher(url)
+            .timeout(3, scheduler: RunLoop.current)
             .sink {
-                print ("Received completion: \($0).")
+                switch $0 {
+                case .failure(_):
+                    completion(.failure(.fetchError))
+                case .finished:
+                    print ("Received store list completion: \($0).")
+                }
             } receiveValue: { (data: Data, response: URLResponse) in
                 if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
                     do {
@@ -50,16 +58,68 @@ final class CheapSharkService {
             return
         }
         url.appendPathComponent(store.images.logo)
-        networkService.getImagePublisher(url).sink (
-            receiveCompletion: { print ("Received completion: \($0).") },
-            receiveValue: { image in
-                if let strongImage = image {
-                    completion(.success(strongImage))
+        networkService.getImagePublisher(url)
+            .sink (
+                receiveCompletion: {
+                    switch $0 {
+                    case .failure(_):
+                        completion(.failure(.fetchError))
+                    case .finished:
+                        print ("Received fetch image for store \(store.storeID) completion: \($0).")
+                    }
+                },
+                receiveValue: { image in
+                    if let strongImage = image {
+                        completion(.success(strongImage))
+                    } else {
+                        completion(.failure(.fetchError))
+                    }
+                })
+            .store(in: &cancellables)
+    }
+    
+    func getMaximumDeals(forStore store: StoreModel,
+                         _ completion: @escaping (Result<[DealModel], CheapSharkServiceError>) -> Void) {
+        guard var url = apiURL  else {
+            completion(.failure(.apiNotFound))
+            return
+        }
+        url.appendPathComponent("deals")
+        guard
+            var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        else {
+            completion(.failure(.apiNotFound))
+            return
+        }
+        components.queryItems?.append(URLQueryItem(name: "storeID", value: "\(store.storeID)"))
+        components.queryItems?.append(URLQueryItem(name: "pageSize", value: "999"))
+        
+        guard let requestURL = components.url else {
+            completion(.failure(.apiNotFound))
+            return
+        }
+        
+        networkService.getResponsePublisher(requestURL)
+            .sink {
+                switch $0 {
+                case .failure(_):
+                    completion(.failure(.fetchError))
+                case .finished:
+                    print("Received fetch max deals for store \(store.storeID) completion: \($0).")
+                }
+            } receiveValue: { (data: Data, response: URLResponse) in
+                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+                    do {
+                        let deals = try JSONDecoder().decode([DealModel].self, from: data)
+                        completion(.success(deals))
+                    } catch let error {
+                        completion(.failure(.decodeError(error.localizedDescription)))
+                    }
                 } else {
                     completion(.failure(.fetchError))
                 }
-            })
-        .store(in: &cancellables)
+            }
+            .store(in: &cancellables)
     }
 }
 

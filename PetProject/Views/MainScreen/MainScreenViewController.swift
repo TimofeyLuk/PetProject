@@ -71,6 +71,13 @@ class MainScreenViewController: UIViewController {
                 self?.tableView.reloadData()
             }
             .store(in: &cancellables)
+        
+        mainScreenVM.$storesDealsCount.receive(on: DispatchQueue.main)
+            .delay(for: .seconds(2), scheduler: RunLoop.main, options: .none)
+            .sink { [weak self] storeLogos in
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
     }
 }
 
@@ -88,6 +95,7 @@ extension MainScreenViewController: UITableViewDataSource, UITableViewDelegate {
         cell.storeNameLabel.text = store.storeName
         let defaultImage = UIImage(systemName: "cart.fill")?.withTintColor(.systemBlue)
         cell.logoImage.image = mainScreenVM.storesLogos[store.storeID] ?? defaultImage
+        cell.setNumberOfDeals(mainScreenVM.storesDealsCount[store.storeID])
         return cell
     }
     

@@ -17,6 +17,9 @@
 		4338FCCF27F46EC300310822 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCCE27F46EC300310822 /* StoreCell.swift */; };
 		4338FCD027F46EC300310822 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCCE27F46EC300310822 /* StoreCell.swift */; };
 		4338FCD127F46EC300310822 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCCE27F46EC300310822 /* StoreCell.swift */; };
+		4338FCD327F58EE200310822 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCD227F58EE200310822 /* DealModel.swift */; };
+		4338FCD427F58EE200310822 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCD227F58EE200310822 /* DealModel.swift */; };
+		4338FCD527F58EE200310822 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCD227F58EE200310822 /* DealModel.swift */; };
 		434063EF27EC6C200031CF24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434063EE27EC6C200031CF24 /* AppDelegate.swift */; };
 		434063F327EC6C200031CF24 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434063F227EC6C200031CF24 /* LoginViewController.swift */; };
 		434063F827EC6C210031CF24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434063F727EC6C210031CF24 /* Assets.xcassets */; };
@@ -94,6 +97,7 @@
 		4338FCC627F3419C00310822 /* CheapSharkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheapSharkService.swift; sourceTree = "<group>"; };
 		4338FCCA27F3428F00310822 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		4338FCCE27F46EC300310822 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
+		4338FCD227F58EE200310822 /* DealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealModel.swift; sourceTree = "<group>"; };
 		434063EB27EC6C200031CF24 /* PetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434063EE27EC6C200031CF24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		434063F227EC6C200031CF24 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 			children = (
 				4340642527EC77450031CF24 /* UserModel.swift */,
 				4338FCCA27F3428F00310822 /* StoreModel.swift */,
+				4338FCD227F58EE200310822 /* DealModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -607,6 +612,7 @@
 				43E8BF6227EC919F00D9CC50 /* BorderedTextField.swift in Sources */,
 				434063F327EC6C200031CF24 /* LoginViewController.swift in Sources */,
 				43CC86FA27F2E21600C1D94F /* StringExtensions.swift in Sources */,
+				4338FCD327F58EE200310822 /* DealModel.swift in Sources */,
 				4338FCC727F3419C00310822 /* CheapSharkService.swift in Sources */,
 				43E8BF5927EC866400D9CC50 /* LoginViewModel.swift in Sources */,
 				4338FCCB27F3428F00310822 /* StoreModel.swift in Sources */,
@@ -637,6 +643,7 @@
 				43E8BF6C27EC981000D9CC50 /* SecuredBorderedTextField.swift in Sources */,
 				43C0782727F1E6DE006A896C /* DependencyContainer.swift in Sources */,
 				4338FCC827F3419C00310822 /* CheapSharkService.swift in Sources */,
+				4338FCD427F58EE200310822 /* DealModel.swift in Sources */,
 				43CC86FB27F2E21600C1D94F /* StringExtensions.swift in Sources */,
 				4340642D27EC7A540031CF24 /* Coordinator.swift in Sources */,
 				4338FCCC27F3428F00310822 /* StoreModel.swift in Sources */,
@@ -656,6 +663,7 @@
 				43E8BF6427EC919F00D9CC50 /* BorderedTextField.swift in Sources */,
 				4340641027EC6C210031CF24 /* PetProjectUITests.swift in Sources */,
 				43CC86FC27F2E21600C1D94F /* StringExtensions.swift in Sources */,
+				4338FCD527F58EE200310822 /* DealModel.swift in Sources */,
 				4338FCC927F3419C00310822 /* CheapSharkService.swift in Sources */,
 				43E8BF5B27EC866400D9CC50 /* LoginViewModel.swift in Sources */,
 				4338FCCD27F3428F00310822 /* StoreModel.swift in Sources */,

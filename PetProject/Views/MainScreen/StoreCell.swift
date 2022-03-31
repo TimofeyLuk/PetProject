@@ -19,6 +19,7 @@ final class StoreCell: UITableViewCell {
         image.layer.cornerRadius = Constants.cornerRadius
         image.layer.shadowRadius = Constants.cornerRadius
         image.layer.shadowColor = UIColor.systemGray.cgColor
+        image.layer.shadowOpacity = 1
         return image
     }()
     
@@ -30,16 +31,22 @@ final class StoreCell: UITableViewCell {
     
     let numberOfDealsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Number of deals:".localized
+        label.text = ""
         return label
     }()
     
-    // MARK: - Layout
+    // MARK: - Lifecycle
     
-    override func layoutSubviews() {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         makeLayoutConstrains()
-        super.layoutSubviews()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Layout
     
     private func makeLayoutConstrains() {
         addSubview(logoImage)
@@ -69,5 +76,13 @@ final class StoreCell: UITableViewCell {
         static let verticalSpacing: CGFloat = 5
         static let horizontalSpacing: CGFloat = 3
         static let cornerRadius: CGFloat = 7
+    }
+    
+    func setNumberOfDeals(_ count: String?) {
+        if let dealsCount = count {
+            numberOfDealsLabel.text = "Number of deals:".localized + " \(dealsCount)"
+        } else {
+            // TODO: Spinner
+        }
     }
 }
