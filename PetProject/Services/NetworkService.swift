@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import Combine
+import UIKit
 
 final class NetworkService {
     
@@ -19,4 +21,13 @@ final class NetworkService {
         }
     }
     
+    func getResponsePublisher(_ url: URL) -> URLSession.DataTaskPublisher {
+        URLSession.shared.dataTaskPublisher(for: url)
+    }
+    
+    func getImagePublisher(_ url: URL) -> Publishers.Map<URLSession.DataTaskPublisher, UIImage?> {
+        getResponsePublisher(url).map { (data: Data, response: URLResponse) in
+            return UIImage(data: data)
+        }
+    }
 }
