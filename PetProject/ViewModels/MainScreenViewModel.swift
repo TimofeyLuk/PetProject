@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class MainScreenViewModel: ObservableObject {
+final class MainScreenViewModel {
     
     @Published private(set) var stores: [StoreModel] = []
     @Published private(set) var storesLogos: [String : UIImage] = [:]

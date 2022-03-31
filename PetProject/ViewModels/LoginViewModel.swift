@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LoginViewModel: ObservableObject {
+class LoginViewModel {
     
     @Published private(set) var user: UserModel
     @Published private(set) var loginError: LoginError?

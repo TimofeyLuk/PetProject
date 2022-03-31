@@ -22,7 +22,7 @@ final class AppCoordinator: Coordinator {
         showLoginView()
     }
     
-    func showLoginView() {
+    private func showLoginView() {
         let user = UserModel(login: "", password: "")
         let loginService = LoginService(networkService: networkService)
         let loginViewModel = LoginViewModel(user: user, loginService: loginService)
