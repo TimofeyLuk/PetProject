@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
 
     // MARK: - Subviews
     weak var delegate: LoginViewControllerDelegate?
-    var loginScreenVM: LoginViewModel?
+    var loginScreenVM: LoginViewModel!
     let loginForm = LoginFormView()
     
     // MARK: - Constraints
