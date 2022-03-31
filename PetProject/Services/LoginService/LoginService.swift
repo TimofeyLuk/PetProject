@@ -15,14 +15,14 @@ final class LoginService {
         self.networkService = networkService
     }
     
-    func login(user: UserModel) async throws -> Data {
+    func login(user: UserModel) async throws {
         try validateLogin(user.login)
         try validatePassword(user.password)
         
         let loginData = try JSONEncoder().encode(user)
         do {
-            let data = try await networkService.send(data: loginData, forUrl: "same url").0
-            return data
+            let _ = try await networkService.send(data: loginData, forUrl: "same url")
+            return
         } catch let error {
             if let loginError = error as? LoginError {
                 throw loginError

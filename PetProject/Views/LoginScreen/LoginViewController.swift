@@ -8,14 +8,13 @@
 import UIKit
 import Combine
 
-protocol LoginViewControllerDelegate: AnyObject, Coordinator {
+protocol LoginViewControllerDelegate: AnyObject {
     func showMainScreen()
 }
 
 class LoginViewController: UIViewController {
 
-    // MARK: - Subviews
-    weak var delegate: LoginViewControllerDelegate?
+    var delegate: (LoginViewControllerDelegate & Coordinator)?
     var loginScreenVM: LoginViewModel!
     let loginForm = LoginFormView()
     

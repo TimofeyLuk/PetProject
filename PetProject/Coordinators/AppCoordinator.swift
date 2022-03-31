@@ -22,7 +22,7 @@ final class AppCoordinator: Coordinator {
         showLoginView()
     }
     
-    func showLoginView() {
+    private func showLoginView() {
         let user = UserModel(login: "", password: "")
         let loginService = LoginService(networkService: networkService)
         let loginViewModel = LoginViewModel(user: user, loginService: loginService)
@@ -37,8 +37,10 @@ final class AppCoordinator: Coordinator {
 extension AppCoordinator: LoginViewControllerDelegate {
     func showMainScreen() {
         let mainViewController = MainScreenViewController()
-        let mainScreenVM = MainScreenViewModel()
+        let apiService = CheapSharkService(networkService: networkService)
+        let mainScreenVM = MainScreenViewModel(apiService: apiService)
         mainViewController.mainScreenVM = mainScreenVM
+        mainViewController.coordinator = self
         navigationController.viewControllers.removeAll()
         navigationController.pushViewController(mainViewController, animated: true)
     }
