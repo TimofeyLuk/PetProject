@@ -29,12 +29,6 @@ final class StoreCell: UITableViewCell {
         return label
     }()
     
-    let numberOfDealsLabel: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        return label
-    }()
-    
     // MARK: - Lifecycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -51,7 +45,6 @@ final class StoreCell: UITableViewCell {
     private func makeLayoutConstrains() {
         addSubview(logoImage)
         addSubview(storeNameLabel)
-        addSubview(numberOfDealsLabel)
         
         logoImage.snp.makeConstraints { maker in
             maker.height.width.equalTo(self.snp.height).multipliedBy(0.8)
@@ -59,15 +52,9 @@ final class StoreCell: UITableViewCell {
             maker.centerY.equalToSuperview()
         }
         storeNameLabel.snp.makeConstraints { maker in
-            maker.top.equalToSuperview().inset(Constants.verticalSpacing)
+            maker.centerY.equalToSuperview()
             maker.left.equalTo(logoImage.snp.right).offset(Constants.horizontalSpacing)
-            maker.height.equalToSuperview().multipliedBy(0.4)
-            maker.right.equalToSuperview().inset(Constants.horizontalSpacing)
-        }
-        numberOfDealsLabel.snp.makeConstraints { maker in
-            maker.top.equalTo(storeNameLabel.snp.bottom).offset(Constants.verticalSpacing)
-            maker.left.equalTo(logoImage.snp.right).offset(Constants.horizontalSpacing)
-            maker.bottom.equalToSuperview().inset(Constants.verticalSpacing)
+            maker.height.equalToSuperview().multipliedBy(0.5)
             maker.right.equalToSuperview().inset(Constants.horizontalSpacing)
         }
     }
@@ -78,11 +65,4 @@ final class StoreCell: UITableViewCell {
         static let cornerRadius: CGFloat = 7
     }
     
-    func setNumberOfDeals(_ count: String?) {
-        if let dealsCount = count {
-            numberOfDealsLabel.text = "Number of deals:".localized + " \(dealsCount)"
-        } else {
-            // TODO: Spinner
-        }
-    }
 }
