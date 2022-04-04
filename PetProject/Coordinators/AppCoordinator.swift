@@ -37,11 +37,20 @@ final class AppCoordinator: Coordinator {
 extension AppCoordinator: LoginViewControllerDelegate {
     func showMainScreen() {
         let mainViewController = MainScreenViewController()
-        let apiService = CheapSharkService(networkService: networkService)
+        let apiService = DependencyContainer.shared.cheapSharkAPIService
         let mainScreenVM = MainScreenViewModel(apiService: apiService)
         mainViewController.mainScreenVM = mainScreenVM
-        mainViewController.coordinator = self
+        mainViewController.delegate = self
         navigationController.viewControllers.removeAll()
         navigationController.pushViewController(mainViewController, animated: true)
+    }
+}
+
+extension AppCoordinator: MainScreenDelegate {
+    func chooseStore(_ store: StoreModel) {
+        let apiService = DependencyContainer.shared.cheapSharkAPIService
+        let gamesListVM = GamesScreenViewModel(store: store, apiService: apiService)
+        let gamesListVC = GamesScreenViewController(gameListVM: gamesListVM)
+        navigationController.pushViewController(gamesListVC, animated: true)
     }
 }

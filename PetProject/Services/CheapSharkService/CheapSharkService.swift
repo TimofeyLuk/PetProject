@@ -14,7 +14,6 @@ final class CheapSharkService {
     private var hostURL =  URL(string: "https://www.cheapshark.com")
     private var cancellables = Set<AnyCancellable>()
     private let networkService: NetworkService
-    let maximumDealsCount = 999
     let paginationDealsCount = 40
     
     init(networkService: NetworkService) {
@@ -77,8 +76,9 @@ final class CheapSharkService {
             .store(in: &cancellables)
     }
     
-    func getMaximumDeals(forStore store: StoreModel,
-                         _ completion: @escaping (Result<[DealModel], CheapSharkServiceError>) -> Void) {
+    func getStoreDeals(forStore store: StoreModel,
+                       onPaginationPage page: Int,
+                       _ completion: @escaping (Result<[DealModel], CheapSharkServiceError>) -> Void) {
         guard var url = apiURL  else {
             completion(.failure(.apiNotFound))
             return
@@ -90,8 +90,10 @@ final class CheapSharkService {
             completion(.failure(.apiNotFound))
             return
         }
+        components.queryItems = []
         components.queryItems?.append(URLQueryItem(name: "storeID", value: "\(store.storeID)"))
-        components.queryItems?.append(URLQueryItem(name: "pageSize", value: "999"))
+        components.queryItems?.append(URLQueryItem(name: "pageNumber", value: "\(page)"))
+        components.queryItems?.append(URLQueryItem(name: "pageSize", value: "\(paginationDealsCount)"))
         
         guard let requestURL = components.url else {
             completion(.failure(.apiNotFound))
@@ -104,7 +106,7 @@ final class CheapSharkService {
                 case .failure(_):
                     completion(.failure(.fetchError))
                 case .finished:
-                    print("Received fetch max deals for store \(store.storeID) completion: \($0).")
+                    print("Received fetch deals for store \(store.storeID) on page \(page) completion: \($0).")
                 }
             } receiveValue: { (data: Data, response: URLResponse) in
                 if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
