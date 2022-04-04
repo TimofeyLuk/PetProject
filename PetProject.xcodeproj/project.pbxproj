@@ -20,19 +20,6 @@
 		4338FCD327F58EE200310822 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCD227F58EE200310822 /* DealModel.swift */; };
 		4338FCD427F58EE200310822 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCD227F58EE200310822 /* DealModel.swift */; };
 		4338FCD527F58EE200310822 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCD227F58EE200310822 /* DealModel.swift */; };
-		4338FCDE27F6DBD400310822 /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCDD27F6DBD400310822 /* GamesListView.swift */; };
-		4338FCDF27F6DBD400310822 /* GamesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCDD27F6DBD400310822 /* GamesListView.swift */; };
-		4338FCE127F6DBF100310822 /* GamesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCE027F6DBF100310822 /* GamesListCell.swift */; };
-		4338FCE227F6DBF100310822 /* GamesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCE027F6DBF100310822 /* GamesListCell.swift */; };
-		4338FCE427F6DEF000310822 /* GamesScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCE327F6DEF000310822 /* GamesScreenViewModel.swift */; };
-		4338FCE527F6DEF000310822 /* GamesScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCE327F6DEF000310822 /* GamesScreenViewModel.swift */; };
-		4338FCE727F7023D00310822 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCE627F7023D00310822 /* DateExtensions.swift */; };
-		4338FCE827F7023D00310822 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCE627F7023D00310822 /* DateExtensions.swift */; };
-		4338FCEA27F71DBD00310822 /* GamesScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCE927F71DBD00310822 /* GamesScreenViewController.swift */; };
-		4338FCEB27F71DBD00310822 /* GamesScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCE927F71DBD00310822 /* GamesScreenViewController.swift */; };
-		4338FCED27F7210900310822 /* AlertShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCEC27F7210900310822 /* AlertShowable.swift */; };
-		4338FCEE27F7210900310822 /* AlertShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCEC27F7210900310822 /* AlertShowable.swift */; };
-		4338FCEF27F7210900310822 /* AlertShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCEC27F7210900310822 /* AlertShowable.swift */; };
 		434063EF27EC6C200031CF24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434063EE27EC6C200031CF24 /* AppDelegate.swift */; };
 		434063F327EC6C200031CF24 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434063F227EC6C200031CF24 /* LoginViewController.swift */; };
 		434063F827EC6C210031CF24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434063F727EC6C210031CF24 /* Assets.xcassets */; };
@@ -111,12 +98,6 @@
 		4338FCCA27F3428F00310822 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		4338FCCE27F46EC300310822 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 		4338FCD227F58EE200310822 /* DealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealModel.swift; sourceTree = "<group>"; };
-		4338FCDD27F6DBD400310822 /* GamesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListView.swift; sourceTree = "<group>"; };
-		4338FCE027F6DBF100310822 /* GamesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListCell.swift; sourceTree = "<group>"; };
-		4338FCE327F6DEF000310822 /* GamesScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesScreenViewModel.swift; sourceTree = "<group>"; };
-		4338FCE627F7023D00310822 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
-		4338FCE927F71DBD00310822 /* GamesScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesScreenViewController.swift; sourceTree = "<group>"; };
-		4338FCEC27F7210900310822 /* AlertShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertShowable.swift; sourceTree = "<group>"; };
 		434063EB27EC6C200031CF24 /* PetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434063EE27EC6C200031CF24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		434063F227EC6C200031CF24 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -184,16 +165,6 @@
 				4338FCC627F3419C00310822 /* CheapSharkService.swift */,
 			);
 			path = CheapSharkService;
-			sourceTree = "<group>";
-		};
-		4338FCD627F6DB2500310822 /* GamesScreen */ = {
-			isa = PBXGroup;
-			children = (
-				4338FCDD27F6DBD400310822 /* GamesListView.swift */,
-				4338FCE027F6DBF100310822 /* GamesListCell.swift */,
-				4338FCE927F71DBD00310822 /* GamesScreenViewController.swift */,
-			);
-			path = GamesScreen;
 			sourceTree = "<group>";
 		};
 		434063E227EC6C200031CF24 = {
@@ -265,7 +236,6 @@
 		4340642327EC76EB0031CF24 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4338FCD627F6DB2500310822 /* GamesScreen */,
 				439E83A827EDBE40004065F5 /* MainScreen */,
 				43E8BF6527EC974000D9CC50 /* LoginScreen */,
 			);
@@ -277,7 +247,6 @@
 			children = (
 				43E8BF5827EC866400D9CC50 /* LoginViewModel.swift */,
 				439E83AC27EDBF35004065F5 /* MainScreenViewModel.swift */,
-				4338FCE327F6DEF000310822 /* GamesScreenViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -295,7 +264,6 @@
 			isa = PBXGroup;
 			children = (
 				4340642B27EC7A540031CF24 /* Coordinator.swift */,
-				4338FCEC27F7210900310822 /* AlertShowable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -329,7 +297,6 @@
 			isa = PBXGroup;
 			children = (
 				43CC86F927F2E21600C1D94F /* StringExtensions.swift */,
-				4338FCE627F7023D00310822 /* DateExtensions.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -636,17 +603,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4338FCDE27F6DBD400310822 /* GamesListView.swift in Sources */,
 				43E8BF6B27EC981000D9CC50 /* SecuredBorderedTextField.swift in Sources */,
 				43C0782627F1E6DE006A896C /* DependencyContainer.swift in Sources */,
 				439E83AD27EDBF36004065F5 /* MainScreenViewModel.swift in Sources */,
 				439E83AA27EDBE72004065F5 /* MainScreenViewController.swift in Sources */,
-				4338FCE727F7023D00310822 /* DateExtensions.swift in Sources */,
 				4340642027EC76200031CF24 /* AppCoordinator.swift in Sources */,
-				4338FCED27F7210900310822 /* AlertShowable.swift in Sources */,
 				43E8BF7527ECB17900D9CC50 /* LoginError.swift in Sources */,
-				4338FCE127F6DBF100310822 /* GamesListCell.swift in Sources */,
-				4338FCE427F6DEF000310822 /* GamesScreenViewModel.swift in Sources */,
 				43E8BF6227EC919F00D9CC50 /* BorderedTextField.swift in Sources */,
 				434063F327EC6C200031CF24 /* LoginViewController.swift in Sources */,
 				43CC86FA27F2E21600C1D94F /* StringExtensions.swift in Sources */,
@@ -654,7 +616,6 @@
 				4338FCC727F3419C00310822 /* CheapSharkService.swift in Sources */,
 				43E8BF5927EC866400D9CC50 /* LoginViewModel.swift in Sources */,
 				4338FCCB27F3428F00310822 /* StoreModel.swift in Sources */,
-				4338FCEA27F71DBD00310822 /* GamesScreenViewController.swift in Sources */,
 				4340642C27EC7A540031CF24 /* Coordinator.swift in Sources */,
 				43E8BF7127ECB16900D9CC50 /* LoginService.swift in Sources */,
 				43E8BF6727EC979700D9CC50 /* LoginFormView.swift in Sources */,
@@ -670,7 +631,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				43E8BF5F27EC90E800D9CC50 /* NetworkService.swift in Sources */,
-				4338FCEE27F7210900310822 /* AlertShowable.swift in Sources */,
 				439E83AE27EDBF36004065F5 /* MainScreenViewModel.swift in Sources */,
 				43E8BF5A27EC866400D9CC50 /* LoginViewModel.swift in Sources */,
 				43E8BF7627ECB17900D9CC50 /* LoginError.swift in Sources */,
@@ -694,17 +654,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4338FCDF27F6DBD400310822 /* GamesListView.swift in Sources */,
 				43E8BF6D27EC981000D9CC50 /* SecuredBorderedTextField.swift in Sources */,
 				43C0782827F1E6DE006A896C /* DependencyContainer.swift in Sources */,
 				439E83AF27EDBF36004065F5 /* MainScreenViewModel.swift in Sources */,
 				439E83AB27EDBE72004065F5 /* MainScreenViewController.swift in Sources */,
-				4338FCE827F7023D00310822 /* DateExtensions.swift in Sources */,
 				4340641227EC6C210031CF24 /* PetProjectUITestsLaunchTests.swift in Sources */,
-				4338FCEF27F7210900310822 /* AlertShowable.swift in Sources */,
 				43E8BF7727ECB17900D9CC50 /* LoginError.swift in Sources */,
-				4338FCE227F6DBF100310822 /* GamesListCell.swift in Sources */,
-				4338FCE527F6DEF000310822 /* GamesScreenViewModel.swift in Sources */,
 				43E8BF6427EC919F00D9CC50 /* BorderedTextField.swift in Sources */,
 				4340641027EC6C210031CF24 /* PetProjectUITests.swift in Sources */,
 				43CC86FC27F2E21600C1D94F /* StringExtensions.swift in Sources */,
@@ -712,7 +667,6 @@
 				4338FCC927F3419C00310822 /* CheapSharkService.swift in Sources */,
 				43E8BF5B27EC866400D9CC50 /* LoginViewModel.swift in Sources */,
 				4338FCCD27F3428F00310822 /* StoreModel.swift in Sources */,
-				4338FCEB27F71DBD00310822 /* GamesScreenViewController.swift in Sources */,
 				4340642E27EC7A540031CF24 /* Coordinator.swift in Sources */,
 				43E8BF7327ECB16900D9CC50 /* LoginService.swift in Sources */,
 				43E8BF6927EC979700D9CC50 /* LoginFormView.swift in Sources */,
