@@ -11,6 +11,7 @@ class GamesScreenViewModel: ObservableObject {
     
     @Published private(set) var store: StoreModel
     @Published private(set) var dealsList: [DealModel] = []
+    @Published private(set) var dealsImages: [DealModel.ID : UIImage] = [:]
     private(set) var dealsListIsFull = false
     
     private let apiService: CheapSharkService
@@ -37,6 +38,9 @@ class GamesScreenViewModel: ObservableObject {
                     print("paginate deals list count \(error)")
                     self.paginationDispatchGroup.leave()
                 case .success(let deals):
+                    deals.forEach {
+                        self.fetchImage(forDeal: $0)
+                    }
                     DispatchQueue.main.async {
                         self.paginationPage += 1
                         self.dealsList = Array(Set(self.dealsList + deals))
@@ -46,6 +50,20 @@ class GamesScreenViewModel: ObservableObject {
                         self.paginationDispatchGroup.leave()
                     }
                 }
+            }
+        }
+    }
+    
+    private func fetchImage(forDeal deal: DealModel) {
+        apiService.fetchImage(forDeal: deal) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self.dealsImages[deal.id] = image
+                }
+            case .failure(let error):
+                print("fetch image error: \(error)")
             }
         }
     }

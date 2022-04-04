@@ -122,6 +122,31 @@ final class CheapSharkService {
             }
             .store(in: &cancellables)
     }
+    
+    func fetchImage(forDeal deal: DealModel, _ completion: @escaping (Result<UIImage, CheapSharkServiceError>) -> Void ) {
+        guard let url = URL(string: deal.thumb ?? "") else {
+            completion(.failure(.apiNotFound))
+            return
+        }
+        networkService.getImagePublisher(url)
+            .sink (
+                receiveCompletion: {
+                    switch $0 {
+                    case .failure(_):
+                        completion(.failure(.fetchError))
+                    case .finished:
+                        print ("Received fetch image for deal \(deal.id) completion: \($0).")
+                    }
+                },
+                receiveValue: { image in
+                    if let strongImage = image {
+                        completion(.success(strongImage))
+                    } else {
+                        completion(.failure(.fetchError))
+                    }
+                })
+            .store(in: &cancellables)
+    }
 }
 
 enum CheapSharkServiceError: Error {

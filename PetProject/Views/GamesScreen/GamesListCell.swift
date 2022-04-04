@@ -10,11 +10,18 @@ import SwiftUI
 struct GamesListCell: View {
     
     var deal: DealModel
+    var image: UIImage?
     @State private var fullInfoShown: Bool = false
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
+            HStack(alignment: .center) {
+                if let image = image {
+                    Image(uiImage: image)
+                        .frame(width: 120,
+                               height: 45,
+                               alignment: .center)
+                }
                 Text(deal.title ?? "No title")
                     .font(.title2)
                     .fontWeight(.heavy)

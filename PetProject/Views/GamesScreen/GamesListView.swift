@@ -14,7 +14,8 @@ struct GamesListView: View {
         ScrollView {
             LazyVStack {
                 ForEach(gameListVM.dealsList) { deal in
-                    GamesListCell(deal: deal)
+                    let image = gameListVM.dealsImages[deal.id]
+                    GamesListCell(deal: deal, image: image)
                         .padding([.leading, .trailing, .top])
                 }
                 if !gameListVM.dealsListIsFull {
