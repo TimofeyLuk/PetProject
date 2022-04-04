@@ -12,5 +12,4 @@ final class DependencyContainer {
     
     let networkService = NetworkService()
     private(set) lazy var loginService = LoginService(networkService: self.networkService)
-    private(set) lazy var cheapSharkAPIService = CheapSharkService(networkService: self.networkService)
 }

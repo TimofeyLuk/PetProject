@@ -8,14 +8,10 @@
 import SnapKit
 import Combine
 
-protocol MainScreenDelegate {
-    func chooseStore(_ store: StoreModel)
-}
-
 class MainScreenViewController: UIViewController {
     
     var mainScreenVM: MainScreenViewModel!
-    var delegate: (AlertShowable & MainScreenDelegate)?
+    var coordinator: Coordinator?
     private var cancellables = Set<AnyCancellable>()
     
     private let tableView = UITableView()
@@ -65,11 +61,18 @@ class MainScreenViewController: UIViewController {
                                               preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok".localized, style: .cancel)
                 alert.addAction(okAction)
-                self.delegate?.showAlert(alert)
+                self.coordinator?.showAlert(alert)
             })
             .store(in: &cancellables)
         
         mainScreenVM.$storesLogos.receive(on: DispatchQueue.main)
+            .delay(for: .seconds(2), scheduler: RunLoop.main, options: .none)
+            .sink { [weak self] storeLogos in
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
+        
+        mainScreenVM.$storesDealsCount.receive(on: DispatchQueue.main)
             .delay(for: .seconds(2), scheduler: RunLoop.main, options: .none)
             .sink { [weak self] storeLogos in
                 self?.tableView.reloadData()
@@ -92,14 +95,11 @@ extension MainScreenViewController: UITableViewDataSource, UITableViewDelegate {
         cell.storeNameLabel.text = store.storeName
         let defaultImage = UIImage(systemName: "cart.fill")?.withTintColor(.systemBlue)
         cell.logoImage.image = mainScreenVM.storesLogos[store.storeID] ?? defaultImage
+        cell.setNumberOfDeals(mainScreenVM.storesDealsCount[store.storeID])
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.chooseStore(mainScreenVM.stores[indexPath.row])
     }
 }
