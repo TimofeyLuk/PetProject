@@ -7,10 +7,9 @@
 
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator: AlertShowable {
     var navigationController: UINavigationController { get }
     func start()
-    func showAlert(_ alert: UIAlertController)
 }
 
 extension Coordinator {
