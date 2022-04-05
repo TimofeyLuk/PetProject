@@ -8,15 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		26E21F7E83BAC7571A7E2A37 /* Pods_PetProject_PetProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132201D039F79FEB5A69F1CA /* Pods_PetProject_PetProjectUITests.framework */; };
-		4338FCC727F3419C00310822 /* CheapSharkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCC627F3419C00310822 /* CheapSharkService.swift */; };
-		4338FCC827F3419C00310822 /* CheapSharkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCC627F3419C00310822 /* CheapSharkService.swift */; };
-		4338FCC927F3419C00310822 /* CheapSharkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCC627F3419C00310822 /* CheapSharkService.swift */; };
-		4338FCCB27F3428F00310822 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCCA27F3428F00310822 /* StoreModel.swift */; };
-		4338FCCC27F3428F00310822 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCCA27F3428F00310822 /* StoreModel.swift */; };
-		4338FCCD27F3428F00310822 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCCA27F3428F00310822 /* StoreModel.swift */; };
-		4338FCCF27F46EC300310822 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCCE27F46EC300310822 /* StoreCell.swift */; };
-		4338FCD027F46EC300310822 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCCE27F46EC300310822 /* StoreCell.swift */; };
-		4338FCD127F46EC300310822 /* StoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4338FCCE27F46EC300310822 /* StoreCell.swift */; };
 		434063EF27EC6C200031CF24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434063EE27EC6C200031CF24 /* AppDelegate.swift */; };
 		434063F327EC6C200031CF24 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434063F227EC6C200031CF24 /* LoginViewController.swift */; };
 		434063F827EC6C210031CF24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 434063F727EC6C210031CF24 /* Assets.xcassets */; };
@@ -91,9 +82,6 @@
 		074EE40B1AE975F0C2EF1716 /* Pods-PetProject-PetProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PetProject-PetProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-PetProject-PetProjectUITests/Pods-PetProject-PetProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		132201D039F79FEB5A69F1CA /* Pods_PetProject_PetProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetProject_PetProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AAEE5640742A68045B91F6E /* Pods_PetProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PetProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4338FCC627F3419C00310822 /* CheapSharkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheapSharkService.swift; sourceTree = "<group>"; };
-		4338FCCA27F3428F00310822 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
-		4338FCCE27F46EC300310822 /* StoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCell.swift; sourceTree = "<group>"; };
 		434063EB27EC6C200031CF24 /* PetProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		434063EE27EC6C200031CF24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		434063F227EC6C200031CF24 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -155,14 +143,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4338FCC527F3417600310822 /* CheapSharkService */ = {
-			isa = PBXGroup;
-			children = (
-				4338FCC627F3419C00310822 /* CheapSharkService.swift */,
-			);
-			path = CheapSharkService;
-			sourceTree = "<group>";
-		};
 		434063E227EC6C200031CF24 = {
 			isa = PBXGroup;
 			children = (
@@ -223,7 +203,6 @@
 			isa = PBXGroup;
 			children = (
 				4340642527EC77450031CF24 /* UserModel.swift */,
-				4338FCCA27F3428F00310822 /* StoreModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -267,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				439E83A927EDBE72004065F5 /* MainScreenViewController.swift */,
-				4338FCCE27F46EC300310822 /* StoreCell.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -299,7 +277,6 @@
 		43E8BF5C27EC90A900D9CC50 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				4338FCC527F3417600310822 /* CheapSharkService */,
 				43E8BF6F27ECB15300D9CC50 /* LoginService */,
 				43E8BF5D27EC90E800D9CC50 /* NetworkService.swift */,
 				43C0782527F1E6DE006A896C /* DependencyContainer.swift */,
@@ -607,15 +584,12 @@
 				43E8BF6227EC919F00D9CC50 /* BorderedTextField.swift in Sources */,
 				434063F327EC6C200031CF24 /* LoginViewController.swift in Sources */,
 				43CC86FA27F2E21600C1D94F /* StringExtensions.swift in Sources */,
-				4338FCC727F3419C00310822 /* CheapSharkService.swift in Sources */,
 				43E8BF5927EC866400D9CC50 /* LoginViewModel.swift in Sources */,
-				4338FCCB27F3428F00310822 /* StoreModel.swift in Sources */,
 				4340642C27EC7A540031CF24 /* Coordinator.swift in Sources */,
 				43E8BF7127ECB16900D9CC50 /* LoginService.swift in Sources */,
 				43E8BF6727EC979700D9CC50 /* LoginFormView.swift in Sources */,
 				434063EF27EC6C200031CF24 /* AppDelegate.swift in Sources */,
 				4340642627EC77450031CF24 /* UserModel.swift in Sources */,
-				4338FCCF27F46EC300310822 /* StoreCell.swift in Sources */,
 				43E8BF5E27EC90E800D9CC50 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -631,15 +605,12 @@
 				4340642727EC77450031CF24 /* UserModel.swift in Sources */,
 				43E8BF6827EC979700D9CC50 /* LoginFormView.swift in Sources */,
 				43E8BF7227ECB16900D9CC50 /* LoginService.swift in Sources */,
-				4338FCD027F46EC300310822 /* StoreCell.swift in Sources */,
 				43E8BF6327EC919F00D9CC50 /* BorderedTextField.swift in Sources */,
 				4340640627EC6C210031CF24 /* PetProjectTests.swift in Sources */,
 				43E8BF6C27EC981000D9CC50 /* SecuredBorderedTextField.swift in Sources */,
 				43C0782727F1E6DE006A896C /* DependencyContainer.swift in Sources */,
-				4338FCC827F3419C00310822 /* CheapSharkService.swift in Sources */,
 				43CC86FB27F2E21600C1D94F /* StringExtensions.swift in Sources */,
 				4340642D27EC7A540031CF24 /* Coordinator.swift in Sources */,
-				4338FCCC27F3428F00310822 /* StoreModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,15 +627,12 @@
 				43E8BF6427EC919F00D9CC50 /* BorderedTextField.swift in Sources */,
 				4340641027EC6C210031CF24 /* PetProjectUITests.swift in Sources */,
 				43CC86FC27F2E21600C1D94F /* StringExtensions.swift in Sources */,
-				4338FCC927F3419C00310822 /* CheapSharkService.swift in Sources */,
 				43E8BF5B27EC866400D9CC50 /* LoginViewModel.swift in Sources */,
-				4338FCCD27F3428F00310822 /* StoreModel.swift in Sources */,
 				4340642E27EC7A540031CF24 /* Coordinator.swift in Sources */,
 				43E8BF7327ECB16900D9CC50 /* LoginService.swift in Sources */,
 				43E8BF6927EC979700D9CC50 /* LoginFormView.swift in Sources */,
 				4340642827EC77450031CF24 /* UserModel.swift in Sources */,
 				4340642127EC76200031CF24 /* AppCoordinator.swift in Sources */,
-				4338FCD127F46EC300310822 /* StoreCell.swift in Sources */,
 				43E8BF6027EC90E800D9CC50 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

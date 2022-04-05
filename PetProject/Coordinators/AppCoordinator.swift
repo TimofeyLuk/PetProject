@@ -37,10 +37,8 @@ final class AppCoordinator: Coordinator {
 extension AppCoordinator: LoginViewControllerDelegate {
     func showMainScreen() {
         let mainViewController = MainScreenViewController()
-        let apiService = CheapSharkService(networkService: networkService)
-        let mainScreenVM = MainScreenViewModel(apiService: apiService)
+        let mainScreenVM = MainScreenViewModel()
         mainViewController.mainScreenVM = mainScreenVM
-        mainViewController.coordinator = self
         navigationController.viewControllers.removeAll()
         navigationController.pushViewController(mainViewController, animated: true)
     }
