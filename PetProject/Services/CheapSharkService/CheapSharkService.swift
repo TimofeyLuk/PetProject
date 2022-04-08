@@ -12,7 +12,6 @@ final class CheapSharkService {
     
     private let apiURL = URL(string: "https://www.cheapshark.com/api/1.0")
     private var hostURL =  URL(string: "https://www.cheapshark.com")
-    private var cancellables = Set<AnyCancellable>()
     private let networkService: NetworkService
     let paginationDealsCount = 40
     
@@ -20,132 +19,93 @@ final class CheapSharkService {
         self.networkService = networkService
     }
     
-    func getStoresList(_ completion: @escaping (Result<[StoreModel], CheapSharkServiceError>) -> Void ) {
+    typealias GetStoresListPublisher = Publishers.Map<NetworkService.GetResponsePublisher, Result<[StoreModel], CheapSharkServiceError>>
+    func getStoresList() -> GetStoresListPublisher? {
         guard var url = apiURL else {
-            completion(.failure(.apiNotFound))
-            return
+            return nil
         }
         url.appendPathComponent("stores")
-        networkService.getResponsePublisher(url)
-            .timeout(3, scheduler: RunLoop.current)
-            .sink {
-                switch $0 {
-                case .failure(_):
-                    completion(.failure(.fetchError))
-                case .finished:
-                    print ("Received store list completion: \($0).")
-                }
-            } receiveValue: { (data: Data, response: URLResponse) in
-                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-                    do {
-                        let stores = try JSONDecoder().decode([StoreModel].self, from: data)
-                        completion(.success(stores))
-                    } catch let error {
-                        completion(.failure(.decodeError(error.localizedDescription)))
-                    }
-                } else {
-                    completion(.failure(.fetchError))
+        return networkService.getResponsePublisher(url).map { result -> Result<[StoreModel], CheapSharkServiceError> in
+            switch result {
+            case .failure(_):
+                return .failure(CheapSharkServiceError.fetchError)
+            case .success(let data):
+                do {
+                    let stores = try JSONDecoder().decode([StoreModel].self, from: data)
+                    return .success(stores)
+                } catch let error {
+                    return .failure(.decodeError(error.localizedDescription))
                 }
             }
-            .store(in: &cancellables)
+        }
     }
     
-    func fetchImage(forStore store: StoreModel, _ completion: @escaping (Result<UIImage, CheapSharkServiceError>) -> Void ) {
+    typealias FetchImagePublisher = Publishers.Map<NetworkService.GetImagePublisher, Result<UIImage, CheapSharkServiceError>>
+    func fetchImage(forStore store: StoreModel) -> FetchImagePublisher? {
         guard var url = hostURL else {
-            completion(.failure(.apiNotFound))
-            return
+            return nil
         }
         url.appendPathComponent(store.images.logo)
-        networkService.getImagePublisher(url)
-            .sink (
-                receiveCompletion: {
-                    switch $0 {
-                    case .failure(_):
-                        completion(.failure(.fetchError))
-                    case .finished:
-                        print ("Received fetch image for store \(store.storeID) completion: \($0).")
-                    }
-                },
-                receiveValue: { image in
-                    if let strongImage = image {
-                        completion(.success(strongImage))
-                    } else {
-                        completion(.failure(.fetchError))
-                    }
-                })
-            .store(in: &cancellables)
+        return networkService.getImagePublisher(url).map { result -> Result<UIImage, CheapSharkServiceError> in
+            switch result {
+            case .success(let image):
+                return .success(image)
+            case .failure(let error):
+                print("fetch image error: \(error.message)")
+                return .failure(.fetchError)
+            }
+        }
     }
     
-    func getStoreDeals(forStore store: StoreModel,
-                       onPaginationPage page: Int,
-                       _ completion: @escaping (Result<[DealModel], CheapSharkServiceError>) -> Void) {
+    typealias GetStoreDealsPublisher = Publishers.Map<NetworkService.GetResponsePublisher, Result<[DealModel], CheapSharkServiceError>>
+    func getStoreDeals(forStore store: StoreModel, onPaginationPage page: Int) -> GetStoreDealsPublisher? {
         guard var url = apiURL  else {
-            completion(.failure(.apiNotFound))
-            return
+            return nil
         }
         url.appendPathComponent("deals")
         guard
             var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         else {
-            completion(.failure(.apiNotFound))
-            return
+            return nil
         }
         components.queryItems = []
         components.queryItems?.append(URLQueryItem(name: "storeID", value: "\(store.storeID)"))
         components.queryItems?.append(URLQueryItem(name: "pageNumber", value: "\(page)"))
         components.queryItems?.append(URLQueryItem(name: "pageSize", value: "\(paginationDealsCount)"))
         
-        guard let requestURL = components.url else {
-            completion(.failure(.apiNotFound))
-            return
-        }
+        guard let requestURL = components.url else { return nil }
         
-        networkService.getResponsePublisher(requestURL)
-            .sink {
-                switch $0 {
-                case .failure(_):
-                    completion(.failure(.fetchError))
-                case .finished:
-                    print("Received fetch deals for store \(store.storeID) on page \(page) completion: \($0).")
-                }
-            } receiveValue: { (data: Data, response: URLResponse) in
-                if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+        return networkService.getResponsePublisher(requestURL, timeout: 7)
+            .map { result -> Result<[DealModel], CheapSharkServiceError> in
+                switch result {
+                case .failure(let error):
+                    print("Response publisher \(String(describing: error))")
+                    return .failure(.fetchError)
+                case .success(let data):
                     do {
                         let deals = try JSONDecoder().decode([DealModel].self, from: data)
-                        completion(.success(deals))
+                        return .success(deals)
                     } catch let error {
-                        completion(.failure(.decodeError(error.localizedDescription)))
+                        return .failure(.decodeError(error.localizedDescription))
                     }
-                } else {
-                    completion(.failure(.fetchError))
                 }
             }
-            .store(in: &cancellables)
     }
     
-    func fetchImage(forDeal deal: DealModel, _ completion: @escaping (Result<UIImage, CheapSharkServiceError>) -> Void ) {
+    func fetchImage(forDeal deal: DealModel) -> FetchImagePublisher? {
         guard let url = URL(string: deal.thumb ?? "") else {
-            completion(.failure(.apiNotFound))
-            return
+            return nil
         }
-        networkService.getImagePublisher(url)
-            .sink (
-                receiveCompletion: {
-                    switch $0 {
-                    case .failure(_):
-                        completion(.failure(.fetchError))
-                    case .finished:
-                        print ("Received fetch image for deal \(deal.id) completion: \($0).")
-                    }
-                },
-                receiveValue: { image in
-                    if let strongImage = image {
-                        completion(.success(strongImage))
-                    } else {
-                        completion(.failure(.fetchError))
-                    }
-                })
-            .store(in: &cancellables)
+        return networkService.getImagePublisher(url)
+            .map { result -> Result<UIImage, CheapSharkServiceError> in
+                switch result {
+                case .success(let image):
+                    return .success(image)
+                case .failure(let error):
+                    print("fetch image error: \(error.message)")
+                    return .failure(.fetchError)
+                }
+            }
     }
 }
 

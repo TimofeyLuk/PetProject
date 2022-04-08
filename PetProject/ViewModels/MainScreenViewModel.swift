@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 final class MainScreenViewModel {
     
@@ -15,6 +16,7 @@ final class MainScreenViewModel {
     
     var count: Int { stores.count }
     private let apiService: CheapSharkService
+    private var cancellables = Set<AnyCancellable>()
     
     init(apiService: CheapSharkService) {
         self.apiService = apiService
@@ -22,36 +24,46 @@ final class MainScreenViewModel {
     }
     
     private func fetchStores() {
-        apiService.getStoresList { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let storesList):
-                self.stores = storesList
-                storesList.forEach { store in
-                    self.fetchImage(forStore: store)
-                }
-            case .failure(let error):
-                self.error = error
-                switch error {
-                case .decodeError(let description):
-                    print("Stores JSON decode error: \(String(describing: description))")
-                default:
-                    print("Fetch stores error: \(error)")
-                }
-            }
-        }
+        apiService.getStoresList()?
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let storesList):
+                        self.stores = storesList
+                        storesList.forEach { store in
+                            self.fetchImage(forStore: store)
+                        }
+                    case .failure(let error):
+                        self.error = error
+                        switch error {
+                        case .decodeError(let description):
+                            print("Stores JSON decode error: \(String(describing: description))")
+                        default:
+                            print("Fetch stores error: \(error)")
+                        }
+                    }
+                
+            })
+            .store(in: &cancellables)
     }
     
     private func fetchImage(forStore store: StoreModel) {
-        apiService.fetchImage(forStore: store) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let image):
-                self.storesLogos[store.storeID] = image
-            case .failure(_):
-                print("fail to get logo for \(store.storeName)")
-            }
-        }
+        apiService.fetchImage(forStore: store)?
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in },
+                  receiveValue: { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success(let image):
+                    self.storesLogos[store.storeID] = image
+                case .failure(_):
+                    print("fail to get logo for \(store.storeName)")
+                }
+            })
+            .store(in: &cancellables)
     }
     
 }
