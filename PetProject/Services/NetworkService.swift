@@ -24,33 +24,29 @@ final class NetworkService {
         }
     }
     
-    typealias GetResponsePublisher = Publishers.Map<URLSession.DataTaskPublisher, Result<Data, ResponseError>>
-    func getResponsePublisher(_ url: URL, timeout: Int = 3) -> GetResponsePublisher {
+    func getResponsePublisher(_ url: URL) -> AnyPublisher<Data, Error> {
         URLSession.shared.dataTaskPublisher(for: url)
-            .map { (data: Data, response: URLResponse) -> Result<Data, ResponseError> in
+            .tryMap({ (data: Data, response: URLResponse) in
                 guard
                     let httpResponse = response as? HTTPURLResponse,
                     httpResponse.statusCode == 200
                 else {
-                    return .failure(ResponseError(message: "failed https response"))
+                    throw ResponseError(message: "failed https response")
                 }
-                return .success(data)
-            }
+                return data
+            })
+            .mapError({ _ in
+                return ResponseError(message: "failed https response")
+            })
+            .eraseToAnyPublisher()
     }
     
-    typealias GetImagePublisher = Publishers.Map<GetResponsePublisher, Result<UIImage, ResponseError>>
-    func getImagePublisher(_ url: URL) -> GetImagePublisher {
-        getResponsePublisher(url).map { result -> Result<UIImage, ResponseError> in
-            switch result {
-            case .failure(let error):
-                return .failure(error)
-            case .success(let data):
-                if let image = UIImage(data: data) {
-                    return .success(image)
-                } else {
-                    return .failure(ResponseError(message: "fail to decode image"))
-                }
-            }
-        }
+    func getDecodedResponsePublisher<Model,Coder>( _ url: URL,
+                                                   modelType: Model.Type,
+                                                   decoder: Coder
+    ) -> AnyPublisher<Model, Error> where Model : Decodable, Coder : TopLevelDecoder {
+        getResponsePublisher(url)
+            .decode(type: modelType, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
     }
 }

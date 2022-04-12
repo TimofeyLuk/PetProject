@@ -19,46 +19,30 @@ final class CheapSharkService {
         self.networkService = networkService
     }
     
-    typealias GetStoresListPublisher = Publishers.Map<NetworkService.GetResponsePublisher, Result<[StoreModel], CheapSharkServiceError>>
-    func getStoresList() -> GetStoresListPublisher? {
+    func getStoresList() -> AnyPublisher<[StoreModel], CheapSharkServiceError>? {
         guard var url = apiURL else {
             return nil
         }
         url.appendPathComponent("stores")
-        return networkService.getResponsePublisher(url).map { result -> Result<[StoreModel], CheapSharkServiceError> in
-            switch result {
-            case .failure(_):
-                return .failure(CheapSharkServiceError.fetchError)
-            case .success(let data):
-                do {
-                    let stores = try JSONDecoder().decode([StoreModel].self, from: data)
-                    return .success(stores)
-                } catch let error {
-                    return .failure(.decodeError(error.localizedDescription))
+        return networkService.getDecodedResponsePublisher(url, modelType: [StoreModel].self, decoder: JSONDecoder())
+            .mapError { error -> CheapSharkServiceError in
+                if error as? NetworkService.ResponseError != nil {
+                    return CheapSharkServiceError.fetchError
                 }
+                return CheapSharkServiceError.decodeError(error.localizedDescription)
             }
-        }
+            .eraseToAnyPublisher()
     }
     
-    typealias FetchImagePublisher = Publishers.Map<NetworkService.GetImagePublisher, Result<UIImage, CheapSharkServiceError>>
-    func fetchImage(forStore store: StoreModel) -> FetchImagePublisher? {
+    func fetchImage(forStore store: StoreModel) -> AnyPublisher<UIImage, CheapSharkServiceError>? {
         guard var url = hostURL else {
             return nil
         }
         url.appendPathComponent(store.images.logo)
-        return networkService.getImagePublisher(url).map { result -> Result<UIImage, CheapSharkServiceError> in
-            switch result {
-            case .success(let image):
-                return .success(image)
-            case .failure(let error):
-                print("fetch image error: \(error.message)")
-                return .failure(.fetchError)
-            }
-        }
+        return fetchImage(url)
     }
     
-    typealias GetStoreDealsPublisher = Publishers.Map<NetworkService.GetResponsePublisher, Result<[DealModel], CheapSharkServiceError>>
-    func getStoreDeals(forStore store: StoreModel, onPaginationPage page: Int) -> GetStoreDealsPublisher? {
+    func getStoreDeals(forStore store: StoreModel, onPaginationPage page: Int) -> AnyPublisher<[DealModel], CheapSharkServiceError>? {
         guard var url = apiURL  else {
             return nil
         }
@@ -75,37 +59,43 @@ final class CheapSharkService {
         
         guard let requestURL = components.url else { return nil }
         
-        return networkService.getResponsePublisher(requestURL, timeout: 7)
-            .map { result -> Result<[DealModel], CheapSharkServiceError> in
-                switch result {
-                case .failure(let error):
-                    print("Response publisher \(String(describing: error))")
-                    return .failure(.fetchError)
-                case .success(let data):
-                    do {
-                        let deals = try JSONDecoder().decode([DealModel].self, from: data)
-                        return .success(deals)
-                    } catch let error {
-                        return .failure(.decodeError(error.localizedDescription))
-                    }
-                }
+        return networkService.getDecodedResponsePublisher(
+            requestURL,
+            modelType: [DealModel].self,
+            decoder: JSONDecoder())
+        .mapError { error -> CheapSharkServiceError in
+            if error as? NetworkService.ResponseError != nil {
+                return CheapSharkServiceError.fetchError
             }
+            return CheapSharkServiceError.decodeError(error.localizedDescription)
+        }
+        .eraseToAnyPublisher()
     }
     
-    func fetchImage(forDeal deal: DealModel) -> FetchImagePublisher? {
+    func fetchImage(forDeal deal: DealModel) -> AnyPublisher<UIImage, CheapSharkServiceError>? {
         guard let url = URL(string: deal.thumb ?? "") else {
             return nil
         }
-        return networkService.getImagePublisher(url)
-            .map { result -> Result<UIImage, CheapSharkServiceError> in
-                switch result {
-                case .success(let image):
-                    return .success(image)
-                case .failure(let error):
-                    print("fetch image error: \(error.message)")
-                    return .failure(.fetchError)
+        return fetchImage(url)
+    }
+    
+    func fetchImage(_ url: URL) -> AnyPublisher<UIImage, CheapSharkServiceError> {
+        return networkService.getResponsePublisher(url)
+            .tryMap { data in
+                guard
+                    let image = UIImage(data: data)
+                else {
+                    throw CheapSharkServiceError.decodeError(nil)
                 }
+                return image
             }
+            .mapError { error -> CheapSharkServiceError in
+                if error as? NetworkService.ResponseError != nil {
+                    return CheapSharkServiceError.fetchError
+                }
+                return CheapSharkServiceError.decodeError(error.localizedDescription)
+            }
+            .eraseToAnyPublisher()
     }
 }
 
