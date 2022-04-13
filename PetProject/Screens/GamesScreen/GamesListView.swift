@@ -38,7 +38,7 @@ struct GamesListView_Previews: PreviewProvider {
                                                                                                    logo: "",
                                                                                                    icon: "")),
                                                        apiService: CheapSharkService(
-                                                        networkService: DependencyContainer.shared.networkService
+                                                        networkService: NetworkService()
                                                        )
         ))
     }

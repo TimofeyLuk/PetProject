@@ -8,33 +8,35 @@
 import Foundation
 
 final class DependencyContainer {
-    static let shared = DependencyContainer()
     
     let networkService = NetworkService()
-    private(set) lazy var loginService = LoginService(networkService: self.networkService)
-    private(set) lazy var cheapSharkAPIService = CheapSharkService(networkService: self.networkService)
     
-    private(set) lazy var loginViewController: LoginViewController = {
+    func loginService() -> LoginService {
+        LoginService(networkService: self.networkService)
+    }
+    
+    func cheapSharkAPIService() -> CheapSharkService {
+        CheapSharkService(networkService: self.networkService)
+    }
+    
+    func loginViewController() -> LoginViewController {
         let user = UserModel(login: "", password: "")
         let loginService = LoginService(networkService: self.networkService)
         let loginViewModel = LoginViewModel(user: user, loginService: loginService)
         let loginVC = LoginViewController()
         loginVC.loginScreenVM = loginViewModel
         return loginVC
-    }()
+    }
     
-    
-    private(set) lazy var mainViewController: MainScreenViewController = {
+    func mainViewController() -> MainScreenViewController {
         let mainViewController = MainScreenViewController()
-        let apiService = self.cheapSharkAPIService
-        let mainScreenVM = MainScreenViewModel(apiService: apiService)
+        let mainScreenVM = MainScreenViewModel(apiService: cheapSharkAPIService())
         mainViewController.mainScreenVM = mainScreenVM
         return mainViewController
-    }()
+    }
     
     func gamesScreenViewController(forStore store: StoreModel) -> GamesScreenViewController {
-        let apiService = DependencyContainer.shared.cheapSharkAPIService
-        let gamesListVM = GamesScreenViewModel(store: store, apiService: apiService)
+        let gamesListVM = GamesScreenViewModel(store: store, apiService: cheapSharkAPIService())
         let gamesListVC = GamesScreenViewController(gameListVM: gamesListVM)
         return gamesListVC
     }
