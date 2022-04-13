@@ -23,12 +23,8 @@ final class AppCoordinator: Coordinator {
     }
     
     private func showLoginView() {
-        let user = UserModel(login: "", password: "")
-        let loginService = LoginService(networkService: networkService)
-        let loginViewModel = LoginViewModel(user: user, loginService: loginService)
-        let loginVC = LoginViewController()
+        let loginVC = DependencyContainer.shared.loginViewController
         loginVC.delegate = self
-        loginVC.loginScreenVM = loginViewModel
         navigationController.pushViewController(loginVC, animated: false)
     }
     
@@ -36,10 +32,7 @@ final class AppCoordinator: Coordinator {
 
 extension AppCoordinator: LoginViewControllerDelegate {
     func showMainScreen() {
-        let mainViewController = MainScreenViewController()
-        let apiService = DependencyContainer.shared.cheapSharkAPIService
-        let mainScreenVM = MainScreenViewModel(apiService: apiService)
-        mainViewController.mainScreenVM = mainScreenVM
+        let mainViewController = DependencyContainer.shared.mainViewController
         mainViewController.delegate = self
         navigationController.viewControllers.removeAll()
         navigationController.pushViewController(mainViewController, animated: true)
@@ -48,9 +41,7 @@ extension AppCoordinator: LoginViewControllerDelegate {
 
 extension AppCoordinator: MainScreenDelegate {
     func chooseStore(_ store: StoreModel) {
-        let apiService = DependencyContainer.shared.cheapSharkAPIService
-        let gamesListVM = GamesScreenViewModel(store: store, apiService: apiService)
-        let gamesListVC = GamesScreenViewController(gameListVM: gamesListVM)
+        let gamesListVC = DependencyContainer.shared.gamesScreenViewController(forStore: store)
         navigationController.pushViewController(gamesListVC, animated: true)
     }
 }

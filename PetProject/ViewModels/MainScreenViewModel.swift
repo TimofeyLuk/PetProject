@@ -27,15 +27,8 @@ final class MainScreenViewModel {
         apiService.getStoresList()?
             .receive(on: DispatchQueue.main)
             .sink(
-                receiveCompletion: { _ in },
-                receiveValue: { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let storesList):
-                        self.stores = storesList
-                        storesList.forEach { store in
-                            self.fetchImage(forStore: store)
-                        }
+                receiveCompletion: { completion in
+                    switch completion {
                     case .failure(let error):
                         self.error = error
                         switch error {
@@ -44,8 +37,16 @@ final class MainScreenViewModel {
                         default:
                             print("Fetch stores error: \(error)")
                         }
+                    case .finished:
+                        print("Fetch stores finished")
                     }
-                
+                },
+                receiveValue: { [weak self] storesList in
+                    guard let self = self else { return }
+                    self.stores = storesList
+                    storesList.forEach { store in
+                        self.fetchImage(forStore: store)
+                    }
             })
             .store(in: &cancellables)
     }
@@ -53,15 +54,15 @@ final class MainScreenViewModel {
     private func fetchImage(forStore store: StoreModel) {
         apiService.fetchImage(forStore: store)?
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in },
-                  receiveValue: { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let image):
-                    self.storesLogos[store.storeID] = image
-                case .failure(_):
-                    print("fail to get logo for \(store.storeName)")
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error):
+                    print("fail to get logo for \(store.storeName) with error: \(error)")
+                case .finished:
+                    print("fetch logo for \(store.storeName) finished")
                 }
+            }, receiveValue: { image in
+                self.storesLogos[store.storeID] = image
             })
             .store(in: &cancellables)
     }

@@ -49,7 +49,7 @@ struct GamesListCell: View {
             Spacer()
             HStack {
                 Text("Price".localized + ": ")
-                Text(deal.normalPrice)
+                Text(deal.normalPrice ?? "-")
                     .strikethrough(salePrice > 0)
             }
         }

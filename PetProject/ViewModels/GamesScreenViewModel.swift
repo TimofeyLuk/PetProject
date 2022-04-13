@@ -33,25 +33,25 @@ class GamesScreenViewModel: ObservableObject {
             self.paginationDispatchGroup.wait()
             self.paginationDispatchGroup.enter()
             self.apiService.getStoreDeals(forStore: self.store, onPaginationPage: self.paginationPage)?
-                .sink(receiveCompletion: { _ in },
-                      receiveValue: { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
+                .sink(receiveCompletion: { completion in
+                    switch completion {
                     case .failure(let error):
-                        print("paginate deals list count \(error)")
+                        print("paginate deals list count for page \(self.paginationPage) error: \(error)")
                         self.paginationDispatchGroup.leave()
-                    case .success(let deals):
-                        deals.forEach {
-                            self.fetchImage(forDeal: $0)
-                        }
-                        DispatchQueue.main.async {
-                            self.paginationPage += 1
-                            self.dealsList = Array(Set(self.dealsList + deals))
-                            self.dealsListIsFull = deals.isEmpty
-                            print("\n new paginationPage \(self.paginationPage)")
-                            print("added \(deals.count) deals / total \(self.dealsList.count)")
-                            self.paginationDispatchGroup.leave()
-                        }
+                    case .finished:
+                        print("paginate deals list count for page \(self.paginationPage) finished")
+                    }
+                }, receiveValue: { deals in
+                    deals.forEach {
+                        self.fetchImage(forDeal: $0)
+                    }
+                    DispatchQueue.main.async {
+                        self.paginationPage += 1
+                        self.dealsList = Array(Set(self.dealsList + deals))
+                        self.dealsListIsFull = deals.isEmpty
+                        print("\n new paginationPage \(self.paginationPage)")
+                        print("added \(deals.count) deals / total \(self.dealsList.count)")
+                        self.paginationDispatchGroup.leave()
                     }
                 })
                 .store(in: &self.cancellables)
@@ -60,16 +60,16 @@ class GamesScreenViewModel: ObservableObject {
     
     private func fetchImage(forDeal deal: DealModel) {
         apiService.fetchImage(forDeal: deal)?
-            .sink(receiveCompletion: { _ in },
-                  receiveValue: { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case .success(let image):
-                    DispatchQueue.main.async {
-                        self.dealsImages[deal.id] = image
-                    }
+            .sink(receiveCompletion: { completion in
+                switch completion {
                 case .failure(let error):
                     print("fetch image error: \(error)")
+                case .finished:
+                    print("fetched image for deal \(deal.id)")
+                }
+            }, receiveValue: { image in
+                DispatchQueue.main.async {
+                    self.dealsImages[deal.id] = image
                 }
             })
             .store(in: &cancellables)

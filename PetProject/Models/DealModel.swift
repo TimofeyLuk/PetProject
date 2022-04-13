@@ -9,13 +9,13 @@ import Foundation
 
 struct DealModel: Codable {
     let internalName: String?
-    let title: String!
+    let title: String?
     let metacriticLink: String?
     let dealID: String?
     let storeID: String?
     let gameID: String?
     let salePrice: String?
-    let normalPrice: String!
+    let normalPrice: String?
     let isOnSale: String?
     let savings: String?
     let metacriticScore: String?
