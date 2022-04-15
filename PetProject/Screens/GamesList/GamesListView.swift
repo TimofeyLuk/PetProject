@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GamesListView: View {
-    @ObservedObject var gameListVM: GamesScreenViewModel
+    @ObservedObject var gameListVM: GamesListViewModel
     
     var body: some View {
         ScrollView {
@@ -20,8 +20,8 @@ struct GamesListView: View {
                 }
                 if !gameListVM.dealsListIsFull {
                     ProgressView().onAppear {
-                        let _ = print("ProgressView onAppear")
-                        let _ = gameListVM.paginateDealsList()
+                        print("ProgressView onAppear")
+                        gameListVM.paginateDealsList()
                     }
                 }
             }
@@ -31,7 +31,7 @@ struct GamesListView: View {
 
 struct GamesListView_Previews: PreviewProvider {
     static var previews: some View {
-        GamesListView(gameListVM: GamesScreenViewModel(store: StoreModel(storeID: "",
+        GamesListView(gameListVM: GamesListViewModel(store: StoreModel(storeID: "",
                                                                          storeName: "Store name",
                                                                          isActive: 1,
                                                                          images: StoreModel.Images(banner: "",

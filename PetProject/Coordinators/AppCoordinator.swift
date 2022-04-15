@@ -43,7 +43,7 @@ extension AppCoordinator: LoginViewControllerDelegate {
 
 extension AppCoordinator: MainScreenDelegate {
     func chooseStore(_ store: StoreModel) {
-        let gamesListVC = factory.gamesScreenViewController(forStore: store)
+        let gamesListVC = factory.gamesListViewController(forStore: store)
         navigationController.pushViewController(gamesListVC, animated: true)
     }
 }

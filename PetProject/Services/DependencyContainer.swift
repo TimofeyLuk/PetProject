@@ -15,9 +15,7 @@ final class DependencyContainer {
         LoginService(networkService: self.networkService)
     }
     
-    func cheapSharkAPIService() -> CheapSharkService {
-        CheapSharkService(networkService: self.networkService)
-    }
+    private(set) lazy var cheapSharkAPIService = CheapSharkService(networkService: self.networkService)
     
     func loginViewController() -> LoginViewController {
         let user = UserModel(login: "", password: "")
@@ -30,14 +28,14 @@ final class DependencyContainer {
     
     func mainViewController() -> MainScreenViewController {
         let mainViewController = MainScreenViewController()
-        let mainScreenVM = MainScreenViewModel(apiService: cheapSharkAPIService())
+        let mainScreenVM = MainScreenViewModel(apiService: cheapSharkAPIService)
         mainViewController.mainScreenVM = mainScreenVM
         return mainViewController
     }
     
-    func gamesScreenViewController(forStore store: StoreModel) -> GamesScreenViewController {
-        let gamesListVM = GamesScreenViewModel(store: store, apiService: cheapSharkAPIService())
-        let gamesListVC = GamesScreenViewController(gameListVM: gamesListVM)
+    func gamesListViewController(forStore store: StoreModel) -> GamesListViewController {
+        let gamesListVM = GamesListViewModel(store: store, apiService: cheapSharkAPIService)
+        let gamesListVC = GamesListViewController(gameListVM: gamesListVM)
         return gamesListVC
     }
 }

@@ -1,5 +1,5 @@
 //
-//  GamesScreenViewModel.swift
+//  GamesListViewModel.swift
 //  PetProject
 //
 //  Created by Тимофей Лукашевич on 1.04.22.
@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class GamesScreenViewModel: ObservableObject {
+class GamesListViewModel: ObservableObject {
     
     @Published private(set) var store: StoreModel
     @Published private(set) var dealsList: [DealModel] = []

@@ -15,7 +15,8 @@ protocol MainScreenDelegate {
 class MainScreenViewController: UIViewController {
     
     var mainScreenVM: MainScreenViewModel!
-    var delegate: (AlertShowable & MainScreenDelegate)?
+    typealias MainScreenViewControllerDelegate = (AlertShowable & MainScreenDelegate)
+    var delegate: MainScreenViewControllerDelegate?
     private var cancellables = Set<AnyCancellable>()
     
     private let tableView = UITableView()
@@ -60,12 +61,7 @@ class MainScreenViewController: UIViewController {
                     let self = self,
                     error != nil
                 else { return }
-                let alert = UIAlertController(title: "Error".localized,
-                                              message: "Unable to get stores information".localized,
-                                              preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok".localized, style: .cancel)
-                alert.addAction(okAction)
-                self.delegate?.showAlert(alert)
+                self.delegate?.showErrorAlert(withErrorMessage: "Unable to get stores information".localized)
             })
             .store(in: &cancellables)
         

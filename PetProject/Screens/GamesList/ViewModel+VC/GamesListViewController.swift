@@ -1,5 +1,5 @@
 //
-//  GamesScreenViewController.swift
+//  GamesListViewController.swift
 //  PetProject
 //
 //  Created by Тимофей Лукашевич on 1.04.22.
@@ -8,8 +8,8 @@
 import UIKit
 import SwiftUI
 
-class GamesScreenViewController: UIHostingController<GamesListView> {
-    init(gameListVM: GamesScreenViewModel) {
+class GamesListViewController: UIHostingController<GamesListView> {
+    init(gameListVM: GamesListViewModel) {
         let gameListView = GamesListView(gameListVM: gameListVM)
         super.init(rootView: gameListView)
     }
