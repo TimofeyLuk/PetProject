@@ -28,3 +28,7 @@ struct DealModel: Codable {
     let dealRating: String?
     let thumb: String?
 }
+
+extension DealModel: Identifiable, Hashable {
+    var id: String { dealID ?? UUID().uuidString }
+}

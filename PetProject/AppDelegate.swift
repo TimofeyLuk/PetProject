@@ -17,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         let navigationController = UINavigationController()
         let networkService = NetworkService()
-        self.coordinator = AppCoordinator(navigationController: navigationController, networkService: networkService)
+        let dependencyContainer = DependencyContainer()
+        
+        self.coordinator = AppCoordinator(navigationController: navigationController,
+                                          networkService: networkService,
+                                          dependencyContainer: dependencyContainer)
         coordinator?.start()
         
         window = UIWindow(frame: UIScreen.main.bounds)

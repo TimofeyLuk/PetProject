@@ -136,12 +136,7 @@ class LoginViewController: UIViewController {
             case .password:
                 self.loginForm.passwordField.setErrorMessage(loginError.message)
             case .network:
-                let alert = UIAlertController(title: "Error".localized,
-                                              message: loginError.message,
-                                              preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok".localized, style: .cancel)
-                alert.addAction(okAction)
-                self.delegate?.showAlert(alert)
+                self.delegate?.showErrorAlert(withErrorMessage: loginError.message)
             }
         }.store(in: &cancellables)
         
