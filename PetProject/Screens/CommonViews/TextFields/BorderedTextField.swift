@@ -11,8 +11,8 @@ class BorderedTextField: UIView {
     
     // MARK: - Subviews
     
-    let textField: TextField = {
-        let field = TextField()
+    let textField: PaddingTextField = {
+        let field = PaddingTextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
@@ -82,7 +82,7 @@ class BorderedTextField: UIView {
     }
 }
 
-class TextField: UITextField {
+class PaddingTextField: UITextField {
 
     var padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 

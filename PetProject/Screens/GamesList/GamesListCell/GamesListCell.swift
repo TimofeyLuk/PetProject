@@ -18,9 +18,11 @@ struct GamesListCell: View {
             HStack(alignment: .center) {
                 if let image = image {
                     Image(uiImage: image)
-                        .frame(width: 120,
-                               height: 45,
+                        .resizable()
+                        .frame(maxWidth: 200,
+                               maxHeight: 200,
                                alignment: .center)
+                        .aspectRatio(contentMode: .fit)
                 }
                 Text(deal.title ?? "No title")
                     .font(.title2)
