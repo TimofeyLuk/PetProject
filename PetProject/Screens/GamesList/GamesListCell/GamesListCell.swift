@@ -19,10 +19,10 @@ struct GamesListCell: View {
                 if let image = image {
                     Image(uiImage: image)
                         .resizable()
-                        .frame(maxWidth: 200,
-                               maxHeight: 200,
-                               alignment: .center)
                         .aspectRatio(contentMode: .fit)
+                        .frame(width: 100,
+                               height: 100,
+                               alignment: .center)
                 }
                 Text(deal.title ?? "No title")
                     .font(.title2)
