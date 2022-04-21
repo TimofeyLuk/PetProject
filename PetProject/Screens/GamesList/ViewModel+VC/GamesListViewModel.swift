@@ -30,9 +30,7 @@ class GamesListViewModel: ObservableObject {
     }
     
     func paginateDealsList() {
-        DispatchQueue.main.async { [weak self] in
-            self?.errorMessage = nil
-        }
+        errorMessage = nil
         paginationQueue.async { [weak self] in
             guard let self = self else { return }
             self.paginationDispatchGroup.wait()
