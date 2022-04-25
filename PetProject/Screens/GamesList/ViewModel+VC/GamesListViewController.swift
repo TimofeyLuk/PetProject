@@ -31,7 +31,9 @@ class GamesListViewController: UIHostingController<GamesListView>, UISearchBarDe
             if let errorMessage = message {
                 let alert = UIAlertController(title: "Error".localized, message: errorMessage, preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Ok".localized, style: .default) { _ in
-                    self?.gameListVM.paginateDealsList()
+                    DispatchQueue.main.async {
+                        self?.gameListVM.paginateDealsList()
+                    }
                 }
                 alert.addAction(okAction)
                 self?.delegate.showAlert(alert)
