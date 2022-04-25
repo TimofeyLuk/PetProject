@@ -187,6 +187,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4333E4062816CA21004756FA /* MainStackScreens */ = {
+			isa = PBXGroup;
+			children = (
+				4338FCD627F6DB2500310822 /* GamesList */,
+				439E83A827EDBE40004065F5 /* MainScreen */,
+			);
+			path = MainStackScreens;
+			sourceTree = "<group>";
+		};
+		4333E4072816CA5E004756FA /* SearchStackScreens */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SearchStackScreens;
+			sourceTree = "<group>";
+		};
 		4338FCC527F3417600310822 /* CheapSharkService */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,9 +290,9 @@
 			isa = PBXGroup;
 			children = (
 				434D1D8F280D92AA00F1DE10 /* CommonViews */,
-				4338FCD627F6DB2500310822 /* GamesList */,
-				439E83A827EDBE40004065F5 /* MainScreen */,
 				43E8BF6527EC974000D9CC50 /* LoginScreen */,
+				4333E4062816CA21004756FA /* MainStackScreens */,
+				4333E4072816CA5E004756FA /* SearchStackScreens */,
 			);
 			path = Screens;
 			sourceTree = "<group>";

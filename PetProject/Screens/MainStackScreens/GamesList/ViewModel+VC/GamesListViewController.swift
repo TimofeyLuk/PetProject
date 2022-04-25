@@ -27,6 +27,7 @@ final class GamesListViewController: UIHostingController<GamesListView>, UISearc
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = gameListVM.store.storeName
         gameListVM.$errorMessage.sink { [weak self] message in
             if let errorMessage = message {
                 let alert = UIAlertController(title: "Error".localized, message: errorMessage, preferredStyle: .alert)

@@ -8,12 +8,6 @@
 import UIKit
 
 protocol Coordinator: AlertShowable {
-    var navigationController: UINavigationController { get }
+    var rootViewController: UIViewController { get }
     func start()
-}
-
-extension Coordinator {
-    func showAlert(_ alert: UIAlertController) {
-        navigationController.topViewController?.present(alert, animated: true)
-    }
 }
