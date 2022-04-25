@@ -11,7 +11,7 @@ import Combine
 
 protocol GamesListDelegate { }
 
-class GamesListViewController: UIHostingController<GamesListView>, UISearchBarDelegate {
+final class GamesListViewController: UIHostingController<GamesListView>, UISearchBarDelegate {
     
     private let gameListVM: GamesListViewModel
     typealias GamesListViewControllerDelegate = (GamesListDelegate & AlertShowable)
