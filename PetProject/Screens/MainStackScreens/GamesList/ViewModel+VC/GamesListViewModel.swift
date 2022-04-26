@@ -26,9 +26,7 @@ class GamesListViewModel: ObservableObject {
     init(store: StoreModel, apiService: CheapSharkService) {
         self.store = store
         self.apiService = apiService
-        DispatchQueue.main.async { [weak self] in
-            self?.paginateDealsList()
-        }
+        self.paginateDealsList()
     }
     
     func paginateDealsList() {

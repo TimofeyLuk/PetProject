@@ -27,6 +27,7 @@ final class GamesListViewController: UIHostingController<GamesListView>, UISearc
 
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD:PetProject/Screens/MainStackScreens/GamesList/ViewModel+VC/GamesListViewController.swift
         self.title = gameListVM.store.storeName
         gameListVM.$errorMessage.sink { [weak self] message in
             if let errorMessage = message {
@@ -35,11 +36,20 @@ final class GamesListViewController: UIHostingController<GamesListView>, UISearc
                     DispatchQueue.main.async {
                         self?.gameListVM.paginateDealsList()
                     }
+=======
+        gameListVM.$errorMessage
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] message in
+                if let errorMessage = message {
+                    self?.delegate.showErrorAlert(
+                        withErrorMessage: errorMessage,
+                        okAction: {
+                            self?.gameListVM.paginateDealsList()
+                        }
+                    )
+>>>>>>> search:PetProject/Screens/GamesList/ViewModel+VC/GamesListViewController.swift
                 }
-                alert.addAction(okAction)
-                self?.delegate.showAlert(alert)
-            }
-        }.store(in: &cancellables)
+            }.store(in: &cancellables)
     }
 
     @MainActor required dynamic init?(coder aDecoder: NSCoder) {
