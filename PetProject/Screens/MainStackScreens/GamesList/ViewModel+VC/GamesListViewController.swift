@@ -27,16 +27,7 @@ final class GamesListViewController: UIHostingController<GamesListView>, UISearc
 
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD:PetProject/Screens/MainStackScreens/GamesList/ViewModel+VC/GamesListViewController.swift
         self.title = gameListVM.store.storeName
-        gameListVM.$errorMessage.sink { [weak self] message in
-            if let errorMessage = message {
-                let alert = UIAlertController(title: "Error".localized, message: errorMessage, preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok".localized, style: .default) { _ in
-                    DispatchQueue.main.async {
-                        self?.gameListVM.paginateDealsList()
-                    }
-=======
         gameListVM.$errorMessage
             .receive(on: DispatchQueue.main)
             .sink { [weak self] message in
@@ -47,7 +38,6 @@ final class GamesListViewController: UIHostingController<GamesListView>, UISearc
                             self?.gameListVM.paginateDealsList()
                         }
                     )
->>>>>>> search:PetProject/Screens/GamesList/ViewModel+VC/GamesListViewController.swift
                 }
             }.store(in: &cancellables)
     }
