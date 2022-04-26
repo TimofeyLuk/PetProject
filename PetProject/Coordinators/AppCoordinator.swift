@@ -36,13 +36,11 @@ final class AppCoordinator: Coordinator {
     }
     
     func showAlert(_ alert: UIAlertController) {
-        guard
-            let selectedViewController = tabBarController.selectedViewController
-        else { return }
+        let selectedViewController = tabBarController.selectedViewController
         if let navigationController = selectedViewController as? UINavigationController {
-            navigationController.present(alert, animated: true)
+            navigationController.topViewController?.present(alert, animated: true)
         } else {
-            selectedViewController.present(alert, animated: true)
+            selectedViewController?.present(alert, animated: true)
         }
     }
 }
@@ -52,7 +50,6 @@ extension AppCoordinator: LoginViewControllerDelegate {
         let mainViewController = factory.mainViewController()
         mainViewController.delegate = self
 
-        mainNavigationController.viewControllers.removeAll()
         mainNavigationController.tabBarItem = UITabBarItem(
             title: "Stores".localized,
             image: UIImage(systemName: "cart"),
