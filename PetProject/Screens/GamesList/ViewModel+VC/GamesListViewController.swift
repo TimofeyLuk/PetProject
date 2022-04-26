@@ -27,18 +27,18 @@ final class GamesListViewController: UIHostingController<GamesListView>, UISearc
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        gameListVM.$errorMessage.sink { [weak self] message in
-            if let errorMessage = message {
-                let alert = UIAlertController(title: "Error".localized, message: errorMessage, preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "Ok".localized, style: .default) { _ in
-                    DispatchQueue.main.async {
+        gameListVM.$errorMessage
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] message in
+                if let errorMessage = message {
+                    let alert = UIAlertController(title: "Error".localized, message: errorMessage, preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Ok".localized, style: .default) { _ in
                         self?.gameListVM.paginateDealsList()
                     }
+                    alert.addAction(okAction)
+                    self?.delegate.showAlert(alert)
                 }
-                alert.addAction(okAction)
-                self?.delegate.showAlert(alert)
-            }
-        }.store(in: &cancellables)
+            }.store(in: &cancellables)
     }
 
     @MainActor required dynamic init?(coder aDecoder: NSCoder) {
