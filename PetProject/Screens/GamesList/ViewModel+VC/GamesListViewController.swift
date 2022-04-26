@@ -31,12 +31,12 @@ final class GamesListViewController: UIHostingController<GamesListView>, UISearc
             .receive(on: DispatchQueue.main)
             .sink { [weak self] message in
                 if let errorMessage = message {
-                    let alert = UIAlertController(title: "Error".localized, message: errorMessage, preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Ok".localized, style: .default) { _ in
-                        self?.gameListVM.paginateDealsList()
-                    }
-                    alert.addAction(okAction)
-                    self?.delegate.showAlert(alert)
+                    self?.delegate.showErrorAlert(
+                        withErrorMessage: errorMessage,
+                        okAction: {
+                            self?.gameListVM.paginateDealsList()
+                        }
+                    )
                 }
             }.store(in: &cancellables)
     }
