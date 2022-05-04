@@ -11,8 +11,8 @@ class BorderedTextField: UIView {
     
     // MARK: - Subviews
     
-    let textField: TextField = {
-        let field = TextField()
+    let textField: PaddingTextField = {
+        let field = PaddingTextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
@@ -82,19 +82,19 @@ class BorderedTextField: UIView {
     }
 }
 
-class TextField: UITextField {
+final class PaddingTextField: UITextField {
 
     var padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
-    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+    override public func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
 
-    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+    override public func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
 
-    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+    override public func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }
     

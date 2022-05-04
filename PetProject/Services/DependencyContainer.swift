@@ -33,9 +33,9 @@ final class DependencyContainer {
         return mainViewController
     }
     
-    func gamesListViewController(forStore store: StoreModel) -> GamesListViewController {
+    func gamesListViewController(forStore store: StoreModel, delegate: GamesListViewController.GamesListViewControllerDelegate) -> GamesListViewController {
         let gamesListVM = GamesListViewModel(store: store, apiService: cheapSharkAPIService)
-        let gamesListVC = GamesListViewController(gameListVM: gamesListVM)
+        let gamesListVC = GamesListViewController(gameListVM: gamesListVM, delegate: delegate)
         return gamesListVC
     }
 }

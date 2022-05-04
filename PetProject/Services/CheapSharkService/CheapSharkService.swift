@@ -42,7 +42,7 @@ final class CheapSharkService {
         return fetchImage(url)
     }
     
-    func getStoreDeals(forStore store: StoreModel, onPaginationPage page: Int) -> AnyPublisher<[DealModel], CheapSharkServiceError>? {
+    func getStoreDeals(forStore store: StoreModel, onPaginationPage page: Int, withSearch searchTitle: String) -> AnyPublisher<[DealModel], CheapSharkServiceError>? {
         guard var url = apiURL  else {
             return nil
         }
@@ -56,6 +56,9 @@ final class CheapSharkService {
         components.queryItems?.append(URLQueryItem(name: "storeID", value: "\(store.storeID)"))
         components.queryItems?.append(URLQueryItem(name: "pageNumber", value: "\(page)"))
         components.queryItems?.append(URLQueryItem(name: "pageSize", value: "\(paginationDealsCount)"))
+        if !searchTitle.isEmpty {
+            components.queryItems?.append(URLQueryItem(name: "title", value: searchTitle))
+        }
         
         guard let requestURL = components.url else { return nil }
         
