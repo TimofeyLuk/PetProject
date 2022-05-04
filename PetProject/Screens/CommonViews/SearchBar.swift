@@ -17,7 +17,7 @@ struct SearchBar: View {
     var body: some View {
         HStack {
             TextField(
-                "Serch".localized,
+                "Search".localized,
                 text: $searchText,
                 onCommit: {
                     self.onCommit?()

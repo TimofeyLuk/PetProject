@@ -22,6 +22,7 @@ class MainScreenViewController: UIViewController {
     private let tableView = UITableView()
     
     override func viewDidLoad() {
+        self.title = "Stores".localized
         styleUI()
         setupTableView()
         makeConstraints()

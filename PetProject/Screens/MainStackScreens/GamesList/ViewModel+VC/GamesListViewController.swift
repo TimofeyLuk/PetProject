@@ -27,6 +27,7 @@ final class GamesListViewController: UIHostingController<GamesListView>, UISearc
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = gameListVM.store.storeName
         gameListVM.$errorMessage
             .receive(on: DispatchQueue.main)
             .sink { [weak self] message in
