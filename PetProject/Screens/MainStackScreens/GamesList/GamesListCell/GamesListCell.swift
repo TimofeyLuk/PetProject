@@ -11,6 +11,7 @@ struct GamesListCell: View {
     
     var deal: DealModel
     var image: UIImage?
+    var storeLogo: UIImage?
     @State private var fullInfoShown: Bool = false
     
     var body: some View {
@@ -30,6 +31,7 @@ struct GamesListCell: View {
                     .multilineTextAlignment(.leading)
                     .padding(.bottom)
                 Spacer()
+                storeLogoImage
                 turnButton
             }
             GamesListCellMainInfo(deal: deal)
@@ -46,6 +48,26 @@ struct GamesListCell: View {
             .onTapGesture {
                 withAnimation { fullInfoShown.toggle() }
             }
+    }
+    
+    var storeLogoImage: some View {
+        Group {
+            if let storeLogo = storeLogo {
+                Image(uiImage: storeLogo)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 30,
+                           height: 30,
+                           alignment: .center)
+                    .shadow(
+                        color: .gray,
+                        radius: 7
+                    )
+                    .padding()
+            } else {
+                EmptyView()
+            }
+        }
     }
     
 }

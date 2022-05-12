@@ -16,6 +16,7 @@ final class DependencyContainer {
     }
     
     private(set) lazy var cheapSharkAPIService = CheapSharkService(networkService: self.networkService)
+    private let saveSearchHistoryService = SaveSearchHistoryService()
     
     func loginViewController() -> LoginViewController {
         let user = UserModel(login: "", password: "")
@@ -37,5 +38,15 @@ final class DependencyContainer {
         let gamesListVM = GamesListViewModel(store: store, apiService: cheapSharkAPIService)
         let gamesListVC = GamesListViewController(gameListVM: gamesListVM, delegate: delegate)
         return gamesListVC
+    }
+    
+    func searchScreenViewController() -> SearchScreenViewControlller {
+        let topDealsListVM = StoreSortedDealsListViewModel(apiService: cheapSharkAPIService)
+        let searchScreenVM = SearchScreenViewModel(
+            topDealsListVM: topDealsListVM,
+            apiService: cheapSharkAPIService,
+            saveHistoryService: saveSearchHistoryService
+        )
+        return SearchScreenViewControlller(viewModel: searchScreenVM)
     }
 }

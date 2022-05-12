@@ -19,3 +19,7 @@ struct StoreModel: Codable {
         let icon: String
     }
 }
+
+extension StoreModel: Identifiable {
+    var id: String { storeID }
+}

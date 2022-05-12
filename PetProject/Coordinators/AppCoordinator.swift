@@ -47,9 +47,9 @@ final class AppCoordinator: Coordinator {
 
 extension AppCoordinator: LoginViewControllerDelegate {
     func showMainScreen() {
+        
         let mainViewController = factory.mainViewController()
         mainViewController.delegate = self
-
         mainNavigationController.tabBarItem = UITabBarItem(
             title: "Stores".localized,
             image: UIImage(systemName: "cart"),
@@ -58,12 +58,14 @@ extension AppCoordinator: LoginViewControllerDelegate {
         mainNavigationController.viewControllers.removeAll()
         mainNavigationController.pushViewController(mainViewController, animated: true)
         
+        let searchViewController = factory.searchScreenViewController()
         searchNavigationController.tabBarItem = UITabBarItem(
             title: "Search".localized,
             image: UIImage(systemName: "magnifyingglass"),
             selectedImage: UIImage(systemName: "magnifyingglass")
         )
         searchNavigationController.viewControllers.removeAll()
+        searchNavigationController.pushViewController(searchViewController, animated: true)
         
         tabBarController.viewControllers?.removeAll()
         tabBarController.setViewControllers([mainNavigationController, searchNavigationController], animated: true)
