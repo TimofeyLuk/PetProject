@@ -12,8 +12,9 @@ struct GamesListCellMainInfo: View {
     
     var body: some View {
         let salePrice = Double(deal.salePrice ?? "") ?? 0
+        let normalPrice =  Double(deal.normalPrice ?? "") ?? 0
         return HStack {
-            if salePrice > 0 {
+            if salePrice > 0, salePrice != normalPrice {
                 HStack {
                     Text("Sale price".localized + ": ")
                     Text(String(format: "%.2f", salePrice))
@@ -22,8 +23,8 @@ struct GamesListCellMainInfo: View {
             Spacer()
             HStack {
                 Text("Price".localized + ": ")
-                Text(deal.normalPrice ?? "-")
-                    .strikethrough(salePrice > 0)
+                Text(String(format: "%.2f", normalPrice))
+                    .strikethrough(salePrice > 0 && salePrice != normalPrice)
             }
         }
     }

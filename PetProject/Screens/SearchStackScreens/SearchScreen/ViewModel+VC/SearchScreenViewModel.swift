@@ -14,9 +14,9 @@ class SearchScreenViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published private(set) var storesLogos: [String : UIImage] = [:]
     @Published private(set) var dealsLogos: [String : UIImage] = [:]
-    @Published private(set) var paginationIsEnded = false
+    @Published private(set) var isPaginationEnded = false
     
-    var topDealsListVM: StoreSortedDealsListViewModel
+    let topDealsListVM: StoreSortedDealsListViewModel
     private var paginationPage: Int = 0
     private let apiService: CheapSharkService
     private var cancellables = Set<AnyCancellable>()
@@ -70,7 +70,7 @@ class SearchScreenViewModel: ObservableObject {
                         self.searchedDeals += deals.filter {
                             !self.searchedDeals.contains($0)
                         }
-                        self.paginationIsEnded = deals.isEmpty
+                        self.isPaginationEnded = deals.isEmpty
                         self.searchDispathGroup.leave()
                         self.paginationPage += 1
                         deals.forEach({ self.fetchDealImage($0) })
@@ -106,7 +106,7 @@ class SearchScreenViewModel: ObservableObject {
         searchText = ""
         searchedDeals = []
         paginationPage = 0
-        paginationIsEnded = false
+        isPaginationEnded = false
     }
     
     private func fetchStores() {

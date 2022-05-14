@@ -84,7 +84,7 @@ struct SearchScreenView: View {
                     storeLogo: viewModel.storesLogos[deal.storeID ?? ""]
                 )
             }
-            if !viewModel.paginationIsEnded {
+            if !viewModel.isPaginationEnded {
                 ProgressView().onAppear { viewModel.searchDeals() }
             }
         }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StoreSortedDealsListCell: View {
     
-    @ObservedObject var viewModel: StoreSortedListCellViewModel
+    @StateObject var viewModel: StoreSortedListCellViewModel
     @State private var isDealsListShown = false
     
     var body: some View {
